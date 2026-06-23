@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /brief/
+
+Sitemap: https://renoveclinic.com.br/sitemap.xml

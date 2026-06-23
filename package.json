@@ -1,0 +1,13 @@
+{
+  "name": "renove-atlas-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "qa:content": "node scripts/qa-content.mjs",
+    "qa:visual": "node scripts/qa-visual.mjs",
+    "qa:a11y": "node scripts/qa-a11y.mjs",
+    "test": "npm run qa:content && npm run qa:a11y && npm run qa:visual",
+    "serve": "node scripts/serve.mjs"
+  }
+}

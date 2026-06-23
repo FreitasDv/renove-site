@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Renove Clinic">
+  <rect width="64" height="64" rx="14" fill="#102a3d"/>
+  <path d="M32 14c-9 6-13 13-13 21a13 13 0 0 0 26 0c0-8-4-15-13-21Z" fill="none" stroke="#a5d6cf" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M32 20c0 9 0 18 0 26" fill="none" stroke="#a5d6cf" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M32 32c3-2 6-3 9-3M32 40c-3-2-6-3-9-3" fill="none" stroke="#a5d6cf" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
