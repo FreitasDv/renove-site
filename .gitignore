@@ -15,3 +15,7 @@ Thumbs.db
 # Backups de sessao (mantidos em disco, fora do git)
 *.bak-herov2
 *.orig.webp
+
+# Internos - nao publicar
+_refs/
+brief/
