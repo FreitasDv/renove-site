@@ -11,3 +11,7 @@ server.log
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Backups de sessao (mantidos em disco, fora do git)
+*.bak-herov2
+*.orig.webp

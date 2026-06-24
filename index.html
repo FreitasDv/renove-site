@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Ubuntu:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
     <script type="application/ld+json">
@@ -38,14 +38,23 @@
         "telephone": "+5514981540709",
         "priceRange": "$$",
         "medicalSpecialty": "Dietetics",
+        "openingHours": "Mo-Sa 09:00-18:00",
         "image": "https://renoveclinic.com.br/assets/logo-renove.png",
+        "sameAs": ["https://www.google.com/search?kgmid=/g/11ybrxv1wg"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. Affonso José Aiello, 10-95 - Vila Aviação",
           "addressLocality": "Bauru",
           "addressRegion": "SP",
+          "postalCode": "17018-520",
           "addressCountry": "BR"
-        }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-22.3606",
+          "longitude": "-49.0537"
+        },
+        "areaServed": { "@type": "City", "name": "Bauru" }
       }
     </script>
     <script type="application/ld+json">
@@ -93,11 +102,11 @@
       <section class="hero hero-home">
         <div class="hero-copy">
           <p class="eyebrow">Emagrecimento médico · Bauru/SP</p>
-          <h1>Você já emagreceu antes. Manter foi o problema.</h1>
+          <h1>Você já emagreceu antes. <span class="editorial">Manter foi o problema.</span></h1>
           <p class="hero-lead">A Renove troca a dieta da moda por avaliação médica, plano individual e acompanhamento de verdade. Médica e nutricionista juntas, do primeiro contato à consulta, em Bauru.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20vim%20pelo%20site%20da%20Renove%20Clinic%20e%20quero%20agendar%20minha%20avaliacao.&utm_source=site&utm_medium=cta&utm_campaign=atlas_home&utm_content=hero_primary">Quero agendar minha avaliação</a>
-            <a class="btn btn-secondary" href="/emagrecimento-bauru/">Como funciona o acompanhamento</a>
+            <a class="btn btn-secondary" href="/emagrecimento-bauru/">Como funciona</a>
           </div>
           <div class="trust-strip" aria-label="Credenciais da Renove">
             <span>CRM-SP 182.823</span>
@@ -108,6 +117,7 @@
         <figure class="hero-visual">
           <img src="/assets/equipe-renove.webp" srcset="/assets/equipe-renove-960.webp 960w, /assets/equipe-renove-1440.webp 1440w, /assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 46vw" width="1920" height="1080" alt="Equipe Renove Clinic em retrato institucional" loading="eager" fetchpriority="high">
           <figcaption>Equipe médica e nutricional em acompanhamento presencial.</figcaption>
+          <span class="hero-glow" aria-hidden="true"></span>
         </figure>
       </section>
 
@@ -183,13 +193,23 @@
           <a class="service-tile" href="/harmonizacao-facial-bauru/">
             <span class="tile-eyebrow">Harmonização facial</span>
             <strong>Estética com avaliação e indicação individual.</strong>
-            <p>Procedimentos pensados a partir do seu rosto e do seu objetivo, com indicação responsável.</p>
+            <p>Procedimentos pensados a partir do seu rosto e do seu objetivo, com indicação responsável e foco em resultado natural.</p>
+            <ul class="tile-points">
+              <li>Avaliação facial antes de indicar</li>
+              <li>Resultado natural, sem exagero</li>
+              <li>Indicação só do que faz sentido pra você</li>
+            </ul>
             <span class="tile-cta">Conhecer<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
           <a class="service-tile" href="/sobre/">
             <span class="tile-eyebrow">Equipe e estrutura</span>
             <strong>Dra. Juliana Reis, em Bauru, atendimento presencial.</strong>
-            <p>Quem conduz, onde fica e como é a estrutura, antes de você decidir.</p>
+            <p>Quem conduz, onde fica e como é a estrutura, com transparência, antes de você decidir.</p>
+            <ul class="tile-points">
+              <li>Médica e nutricionista na mesma equipe</li>
+              <li>Consultório na Vila Aviação, Bauru</li>
+              <li>Atendimento presencial e individual</li>
+            </ul>
             <span class="tile-cta">Sobre a clínica<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </div>
@@ -229,6 +249,7 @@
 
       <section class="proof-section" aria-labelledby="proof-title">
         <img class="botanical botanical-left" src="/assets/folhas-renove.png" width="640" height="640" alt="" loading="lazy" aria-hidden="true">
+        <img class="botanical botanical-tr" src="/assets/folhas-renove.png" width="640" height="640" alt="" loading="lazy" aria-hidden="true">
         <div class="section-heading">
           <p class="eyebrow">A diferença da Renove</p>
           <h2 id="proof-title">A diferença entre tentar de novo e ser acompanhada.</h2>
@@ -237,15 +258,27 @@
           <div>
             <h3>Tentar sozinha</h3>
             <p>Dieta da moda, informação picada na internet, promessa de atalho, e a sensação de recomeçar do zero a cada vez que o peso volta.</p>
+            <ul class="tile-points">
+              <li>Cardápio genérico, igual para todo mundo</li>
+              <li>Sem medição objetiva da evolução</li>
+              <li>Ninguém ajusta quando você trava</li>
+            </ul>
           </div>
           <div>
+            <span class="cmp-badge">Recomendado</span>
             <h3>Com a Renove</h3>
             <p>Avaliação médica séria, plano individual, médica e nutricionista juntas e acompanhamento que ajusta a rota ao longo do processo.</p>
+            <ul class="tile-points">
+              <li>Plano construído a partir do seu histórico</li>
+              <li>Bioimpedância e medição a cada etapa</li>
+              <li>Equipe ajusta o protocolo conforme você evolui</li>
+            </ul>
           </div>
         </div>
       </section>
 
       <section class="cta-section" aria-labelledby="home-cta-title">
+        <img class="botanical-cta" src="/assets/folhas-renove.png" width="544" height="544" alt="" loading="lazy" aria-hidden="true">
         <div>
           <p class="eyebrow">Próximo passo</p>
           <h2 id="home-cta-title">Desta vez, com quem acompanha cada etapa.</h2>
@@ -282,5 +315,9 @@
         <span>Resultados variam conforme histórico, adesão e avaliação individual.</span>
       </div>
     </footer>
+
+    <div class="sticky-cta" aria-label="Acao rápida">
+      <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20agendar%20a%20avaliacao%20presencial%20da%20Renove%20Clinic.&utm_source=site&utm_medium=cta&utm_campaign=atlas_home&utm_content=sticky">Agendar avaliação</a>
+    </div>
   </body>
 </html>

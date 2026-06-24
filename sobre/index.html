@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Ubuntu:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
     <script type="application/ld+json">
@@ -36,13 +36,22 @@
         "name": "Renove Clinic",
         "url": "https://renoveclinic.com.br/sobre/",
         "telephone": "+5514981540709",
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "sameAs": ["https://www.google.com/search?kgmid=/g/11ybrxv1wg"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. Affonso José Aiello, 10-95 - Vila Aviação",
           "addressLocality": "Bauru",
           "addressRegion": "SP",
+          "postalCode": "17018-520",
           "addressCountry": "BR"
-        }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-22.3606",
+          "longitude": "-49.0537"
+        },
+        "areaServed": { "@type": "City", "name": "Bauru" }
       }
     </script>
     <script type="application/ld+json">
@@ -124,13 +133,16 @@
 
     <main id="conteudo">
       <section class="subpage-hero team-page">
-        <p class="eyebrow">Sobre a Renove</p>
-        <h1>Uma clínica de família, com cuidado de verdade.</h1>
-        <p>A Renove Clinic atende em Bauru, na Vila Aviação, com uma proposta clara: avaliação individual, equipe médica e nutricional juntas, acompanhamento próximo e acolhimento desde o primeiro contato. Cuidamos da pessoa inteira, não só do peso.</p>
+        <div class="subpage-hero-copy">
+          <p class="eyebrow">Sobre a Renove</p>
+          <h1>Uma clínica de família, <span class="editorial">com cuidado de verdade.</span></h1>
+          <p>A Renove Clinic atende em Bauru, na Vila Aviação, com uma proposta clara: avaliação individual, equipe médica e nutricional juntas, acompanhamento próximo e acolhimento desde o primeiro contato. Cuidamos da pessoa inteira, não só do peso.</p>
+        </div>
         <img src="/assets/equipe-renove.webp" srcset="/assets/equipe-renove-960.webp 960w, /assets/equipe-renove-1440.webp 1440w, /assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 70vw" width="1920" height="1080" alt="Equipe Renove Clinic em Bauru" loading="lazy">
       </section>
 
       <section class="pillars-section" aria-labelledby="pillars-title">
+        <img class="botanical botanical-tr" src="/assets/folhas-renove.png" width="640" height="640" alt="" loading="lazy" aria-hidden="true">
         <div class="section-heading">
           <p class="eyebrow">Como cuidamos</p>
           <h2 id="pillars-title">Três pilares que sustentam cada protocolo.</h2>
@@ -161,9 +173,10 @@
           <p class="team-intro">A combinação que faz a diferença: enquanto a maioria das clínicas trabalha com um profissional, na Renove o paciente é acompanhado por uma dupla integrada do início ao fim.</p>
         </div>
         <div class="team-grid">
+          <!-- Card da medica: foto individual a confirmar com a clinica (a unica foto disponivel e de grupo). -->
           <article class="team-card">
-            <div class="team-portrait" aria-hidden="true">
-              <img src="/assets/equipe-renove.webp" width="800" height="800" alt="Dra. Juliana Reis, médica da Renove Clinic" loading="lazy">
+            <div class="team-portrait placeholder-portrait" aria-hidden="true">
+              <span>Foto a confirmar</span>
             </div>
             <div class="team-body">
               <p class="team-role">Médica responsável</p>
@@ -172,7 +185,7 @@
               <p>Formada pela Universidade Metropolitana de Santos, com pós-graduação em Nutrologia pelo Hospital Israelita Albert Einstein e mestrado em andamento na Faculdade de Medicina da USP - Bauru. Atuação em Nutrologia e Medicina da Família, com escuta, avaliação integral e condutas individualizadas.</p>
             </div>
           </article>
-          <!-- Card da nutricionista oculto até confirmação de nome, foto e credenciais com a clínica. Reativar quando aprovado.
+          <!-- Card da nutricionista: dados parciais aprovados (nome e funcao). Foto e CRN a confirmar com a clinica. -->
           <article class="team-card">
             <div class="team-portrait placeholder-portrait" aria-hidden="true">
               <span>Foto a confirmar</span>
@@ -184,7 +197,6 @@
               <p>Conduz a nutrição estratégica da clínica: avaliação alimentar, plano individual com foco em saciedade e ajuste de rotina, acompanhamento nutricional ao longo de todo o protocolo. A nutrição na Renove é pilar, não acessório.</p>
             </div>
           </article>
-          -->
         </div>
       </section>
 
@@ -200,6 +212,7 @@
       </section>
 
       <section class="cta-section" aria-labelledby="sobre-cta-title">
+        <img class="botanical-cta" src="/assets/folhas-renove.png" width="544" height="544" alt="" loading="lazy" aria-hidden="true">
         <div>
           <p class="eyebrow">Próximo passo</p>
           <h2 id="sobre-cta-title">Conheça a Renove de perto.</h2>
@@ -236,5 +249,9 @@
         <span>Resultados variam conforme histórico, adesão e avaliação individual.</span>
       </div>
     </footer>
+
+    <div class="sticky-cta" aria-label="Acao rápida">
+      <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20conheci%20a%20equipe%20pela%20pagina%20Sobre%20e%20quero%20agendar%20avaliacao.&utm_source=site&utm_medium=cta&utm_campaign=atlas_sobre&utm_content=sticky">Agendar avaliação</a>
+    </div>
   </body>
 </html>

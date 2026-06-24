@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Ubuntu:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
     <script type="application/ld+json">
@@ -36,13 +36,22 @@
         "name": "Renove Clinic",
         "url": "https://renoveclinic.com.br/contato/",
         "telephone": "+5514981540709",
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "sameAs": ["https://www.google.com/search?kgmid=/g/11ybrxv1wg"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. Affonso José Aiello, 10-95 - Vila Aviação",
           "addressLocality": "Bauru",
           "addressRegion": "SP",
+          "postalCode": "17018-520",
           "addressCountry": "BR"
-        }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-22.3606",
+          "longitude": "-49.0537"
+        },
+        "areaServed": { "@type": "City", "name": "Bauru" }
       }
     </script>
     <script type="application/ld+json">
@@ -111,7 +120,7 @@
       <section class="contact-hero">
         <div>
           <p class="eyebrow">Contato</p>
-          <h1>Renove Clinic em Bauru.</h1>
+          <h1>Renove Clinic <span class="editorial">em Bauru.</span></h1>
           <p>Av. Affonso José Aiello, 10-95 - Vila Aviação, Bauru - SP.</p>
           <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20falar%20com%20a%20Renove%20Clinic%20sobre%20uma%20avaliacao.&utm_source=site&utm_medium=cta&utm_campaign=contato&utm_content=hero">Falar pelo WhatsApp</a>
         </div>
@@ -154,6 +163,8 @@
           <article class="contact-card">
             <h3>Atendimento</h3>
             <p>Atendimento presencial com agendamento prévio pelo WhatsApp. A equipe confirma o melhor horário para a sua avaliação.</p>
+            <p class="contact-hours">Segunda a sábado, 09h às 18h · Domingo fechado</p>
+            <a class="btn btn-secondary" href="tel:+5514981540709">Ligar (14) 98154-0709</a>
           </article>
         </div>
       </section>
@@ -186,5 +197,9 @@
         <span>Resultados variam conforme histórico, adesão e avaliação individual.</span>
       </div>
     </footer>
+
+    <div class="sticky-cta" aria-label="Acao rápida">
+      <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20agendar%20a%20avaliacao%20presencial%20da%20Renove%20Clinic.&utm_source=site&utm_medium=cta&utm_campaign=atlas_contato&utm_content=sticky">Agendar avaliação</a>
+    </div>
   </body>
 </html>

@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Ubuntu:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
     <script type="application/ld+json">
@@ -36,13 +36,22 @@
         "name": "Renove Clinic",
         "url": "https://renoveclinic.com.br/harmonizacao-facial-bauru/",
         "telephone": "+5514981540709",
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "sameAs": ["https://www.google.com/search?kgmid=/g/11ybrxv1wg"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. Affonso José Aiello, 10-95 - Vila Aviação",
           "addressLocality": "Bauru",
           "addressRegion": "SP",
+          "postalCode": "17018-520",
           "addressCountry": "BR"
-        }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-22.3606",
+          "longitude": "-49.0537"
+        },
+        "areaServed": { "@type": "City", "name": "Bauru" }
       }
     </script>
     <script type="application/ld+json">
@@ -111,10 +120,17 @@
 
     <main id="conteudo">
       <section class="subpage-hero">
-        <p class="eyebrow">Harmonização facial em Bauru</p>
-        <h1>Naturalidade vem de avaliação, não de exagero.</h1>
-        <p>O cuidado estético da Renove parte de proporção, naturalidade e segurança. A avaliação entende expectativas, histórico e limites antes de orientar qualquer procedimento. Aqui a decisão é da paciente, com critério profissional.</p>
-        <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20a%20avaliacao%20de%20harmonizacao%20facial%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=hof_bauru&utm_content=hero">Agendar avaliação</a>
+        <div class="subpage-hero-copy">
+          <p class="eyebrow">Harmonização facial em Bauru</p>
+          <h1>Naturalidade vem de avaliação, <span class="editorial">não de exagero.</span></h1>
+          <p>O cuidado estético da Renove parte de proporção, naturalidade e segurança. A avaliação entende expectativas, histórico e limites antes de orientar qualquer procedimento. Aqui a decisão é da paciente, com critério profissional.</p>
+          <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20a%20avaliacao%20de%20harmonizacao%20facial%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=hof_bauru&utm_content=hero">Agendar avaliação</a>
+          <div class="trust-strip" aria-label="Credenciais da Renove">
+            <span>Dra. Juliana Reis</span>
+            <span>CRM-SP 182.823</span>
+            <span>RQE 133.088</span>
+          </div>
+        </div>
         <img class="subpage-photo" src="/assets/equipe-renove.webp" srcset="/assets/equipe-renove-960.webp 960w, /assets/equipe-renove-1440.webp 1440w, /assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 70vw" width="1920" height="1080" alt="Renove Clinic em Bauru" loading="lazy">
       </section>
 
@@ -127,6 +143,7 @@
       </section>
 
       <section class="service-grid-section" aria-labelledby="hof-services-title">
+        <img class="botanical botanical-bl" src="/assets/folhas-renove.png" width="640" height="640" alt="" loading="lazy" aria-hidden="true">
         <div class="section-heading">
           <p class="eyebrow">O que avaliamos</p>
           <h2 id="hof-services-title">Procedimentos com critério e proporção.</h2>
@@ -189,6 +206,7 @@
       </section>
 
       <section class="cta-section" aria-labelledby="hof-cta-title">
+        <img class="botanical-cta" src="/assets/folhas-renove.png" width="544" height="544" alt="" loading="lazy" aria-hidden="true">
         <div>
           <p class="eyebrow">Atendimento presencial</p>
           <h2 id="hof-cta-title">Converse com a Renove sobre sua avaliação.</h2>
