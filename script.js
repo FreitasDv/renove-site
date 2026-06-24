@@ -170,4 +170,76 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
   );
 
   revealEls.forEach((el) => observer.observe(el));
+
+  /* ---- Carrossel de depoimentos ---- */
+  document.querySelectorAll("[data-testimonials]").forEach((root) => {
+    const track = root.querySelector(".tc-track");
+    const slides = Array.from(root.querySelectorAll(".testimonial-card"));
+    const prev = root.querySelector(".tc-prev");
+    const next = root.querySelector(".tc-next");
+    const dotsWrap = root.querySelector(".tc-dots");
+    if (!track || slides.length === 0) return;
+
+    let index = 0;
+    let order = slides.map((_, i) => i);
+    let timer = null;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const autoplayMs = parseInt(root.dataset.autoplay || "0", 10);
+
+    // ordem aleatória inicial (gira "random"), mantendo 1º slide previsível
+    for (let i = order.length - 1; i > 1; i--) {
+      const j = 1 + Math.floor(Math.random() * i);
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    const reordered = order.map((i) => slides[i]);
+    reordered.forEach((s) => track.appendChild(s));
+
+    // dots
+    const dots = reordered.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "tc-dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", "Depoimento " + (i + 1));
+      dot.addEventListener("click", () => goTo(i, true));
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function render() {
+      track.style.transform = "translateX(" + -index * 100 + "%)";
+      dots.forEach((d, i) =>
+        d.setAttribute("aria-selected", i === index ? "true" : "false")
+      );
+    }
+    function goTo(i, user) {
+      index = (i + reordered.length) % reordered.length;
+      render();
+      if (user) restart();
+    }
+    function start() {
+      if (reduceMotion || !autoplayMs) return;
+      timer = window.setInterval(() => goTo(index + 1), autoplayMs);
+    }
+    function stop() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    }
+    function restart() {
+      stop();
+      start();
+    }
+
+    if (prev) prev.addEventListener("click", () => goTo(index - 1, true));
+    if (next) next.addEventListener("click", () => goTo(index + 1, true));
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", start);
+
+    render();
+    start();
+  });
 })();

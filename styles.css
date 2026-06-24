@@ -91,7 +91,7 @@
 @media (min-width: 1440px) {
   :root {
     --container: 1200px;
-    --container-wide: 1320px;
+    --container-wide: 1440px;
   }
 }
 
@@ -101,7 +101,7 @@
 @media (min-width: 1920px) {
   :root {
     --container: 1280px;
-    --container-wide: 1520px;
+    --container-wide: 1680px;
     --gutter: clamp(3rem, 5vw, 6rem);
   }
 }
@@ -110,7 +110,7 @@
 @media (min-width: 2400px) {
   :root {
     --container: 1320px;
-    --container-wide: 1680px;
+    --container-wide: 1860px;
   }
 }
 
@@ -1489,15 +1489,33 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 
 /* Depoimentos na LP */
 .testimonials-section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
-.testimonials-grid {
+
+/* ---- Carrossel de depoimentos ---- */
+.testimonials-carousel {
+  position: relative;
+  margin-top: 1.75rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+.tc-viewport {
+  overflow: hidden;
+  border-radius: var(--radius-soft);
+}
+.tc-track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
 }
 .testimonial-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
   margin: 0;
-  padding: clamp(1.4rem, 3vw, 1.9rem);
+  padding: clamp(1.6rem, 3.5vw, 2.4rem);
   background: var(--surface);
   border: 1px solid var(--ocean-12);
   border-radius: var(--radius-soft);
@@ -1505,17 +1523,94 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+  min-height: 200px;
+  justify-content: center;
+}
+.tc-quote-mark {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 3.4rem;
+  line-height: 0.6;
+  color: var(--aqua);
+  height: 1.4rem;
+  user-select: none;
 }
 .testimonial-card blockquote {
   margin: 0;
   color: var(--reading);
   font-style: italic;
-  line-height: 1.55;
+  font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+  line-height: 1.6;
 }
 .testimonial-card figcaption {
   color: var(--muted);
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.tc-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--petrol), var(--ocean));
+  color: var(--cream);
+  font-size: 0.92rem;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+.tc-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--ocean-12);
+  background: var(--surface);
+  color: var(--petrol);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  flex: 0 0 auto;
+}
+.tc-arrow:hover {
+  background: var(--petrol);
+  color: var(--cream);
+  transform: scale(1.06);
+}
+.tc-arrow:active { transform: scale(0.96); }
+.tc-dots {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+.tc-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--ocean-12);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+.tc-dot[aria-selected="true"] {
+  background: var(--petrol);
+  width: 1.5rem;
+  border-radius: 0.4rem;
+}
+@media (max-width: 720px) {
+  .testimonials-carousel { grid-template-columns: 1fr; }
+  .tc-arrow { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tc-track { transition: none; }
 }
 
 /* ============================================================
@@ -1731,10 +1826,11 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
+  justify-content: center;
   border-radius: var(--radius-soft);
-  padding: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.75rem, 5vw, 4rem);
   margin-block: var(--space-block) clamp(3rem, 6vw, 5rem);
   background-color: var(--deep-blue);
   background-image:
@@ -1742,6 +1838,21 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
     linear-gradient(160deg, #143850, var(--deep-blue));
   color: var(--cream);
   overflow: clip;
+}
+/* Em telas largas: o conteudo da faixa CTA nao se esparrama ate as bordas.
+   Cap interno + centralizado evita o "banner achatado com botao na borda".
+   Tracks 'auto auto' fazem texto e botao se agruparem no centro, em vez de
+   o track 1fr empurrar o botao para a borda direita. */
+@media (min-width: 1024px) {
+  .cta-section {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+  }
+  .cta-section > .cta-copy,
+  .cta-section > div:not(.botanical-cta) {
+    max-width: 52ch;
+  }
 }
 
 .investment-section h2,
@@ -2031,14 +2142,18 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(0, 1fr));
-  gap: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 5rem);
   max-width: var(--container);
   margin: 0 auto;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(255, 250, 243, 0.14);
 }
+.footer-brand { flex: 0 1 auto; max-width: 34ch; }
+.footer-col { flex: 0 1 auto; min-width: 10rem; }
 
 .footer-brand img {
   width: auto;
@@ -2082,7 +2197,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
-  max-width: var(--container);
+  max-width: var(--container-wide);
   margin: 1.75rem auto 0;
   font-size: var(--t-xs);
   color: rgba(255, 250, 243, 0.55);
@@ -2688,8 +2803,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   .timeline { gap: clamp(1.25rem, 3vw, 2rem); }
   .timeline li:nth-child(odd) { padding-left: 0; border-left: 0; }
 
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1 / -1; }
+  .footer-brand { flex: 1 1 100%; max-width: none; }
 
   .service-list { grid-template-columns: 1fr; }
   .service-tile.large { grid-row: auto; }
@@ -2758,9 +2872,8 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   .fit-grid,
   .decision-rail,
   .credential-grid,
-  .testimonials-grid,
-  .diff-grid,
-  .footer-grid { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .footer-col { flex: 1 1 100%; min-width: 0; }
 
   .compare-head { display: none; }
   .compare-item .compare-tag { display: block; }

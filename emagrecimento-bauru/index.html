@@ -425,19 +425,58 @@
           <p class="eyebrow">Quem já passou por aqui</p>
           <h2 id="testimonials-title">O que nossos pacientes dizem.</h2>
         </div>
-        <div class="testimonials-grid">
-          <figure class="testimonial-card">
-            <blockquote>Profissionais atenciosos e explicações claras. Senti segurança durante todo o tratamento.</blockquote>
-            <figcaption>Paciente Renove Clinic</figcaption>
-          </figure>
-          <figure class="testimonial-card">
-            <blockquote>Resultados reais, sem promessas milagrosas e com acompanhamento contínuo.</blockquote>
-            <figcaption>Paciente Renove Clinic</figcaption>
-          </figure>
-          <figure class="testimonial-card">
-            <blockquote>Tive acolhimento desde a primeira consulta. O acompanhamento fez toda a diferença no meu processo.</blockquote>
-            <figcaption>Paciente Renove Clinic</figcaption>
-          </figure>
+        <div class="testimonials-carousel" data-testimonials data-autoplay="6000">
+          <button type="button" class="tc-arrow tc-prev" aria-label="Depoimento anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="tc-viewport">
+            <ul class="tc-track" role="list">
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Carlos">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Profissionais atenciosos e explicações claras. Me senti seguro durante todo o tratamento.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">C</span>Carlos</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Fernanda">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Não é só sobre emagrecer, é sobre aprender a cuidar da saúde e manter constância.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">F</span>Fernanda</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Ricardo">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Resultados reais, sem promessas milagrosas e com acompanhamento contínuo.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">R</span>Ricardo</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Mariana">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Me senti acolhida desde a primeira consulta. O acompanhamento fez toda a diferença no meu processo.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">M</span>Mariana</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Juliana">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Desde a primeira consulta senti profissionalismo e cuidado. Tudo é explicado com clareza e responsabilidade.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">J</span>Juliana</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="André">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>O acompanhamento faz toda a diferença. Me senti seguro em cada etapa do tratamento.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">A</span>André</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Patrícia">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Não é só estética, é saúde de verdade. Aprendi a cuidar melhor de mim ao longo do processo.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">P</span>Patrícia</figcaption>
+              </li>
+              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Felipe">
+                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
+                <blockquote>Resultados consistentes, sem promessas irreais. Um atendimento humano e muito bem estruturado.</blockquote>
+                <figcaption><span class="tc-avatar" aria-hidden="true">F</span>Felipe</figcaption>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="tc-arrow tc-next" aria-label="Próximo depoimento">
+            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="tc-dots" role="tablist" aria-label="Selecionar depoimento"></div>
         </div>
         <p class="micro-note">Depoimentos de pacientes. Resultados variam conforme histórico, rotina e adesão.</p>
       </section>
