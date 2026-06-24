@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Página não encontrada | Renove Clinic</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#102a3d">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Ubuntu:wght@400;500;700&display=swap">
+    <style>
+      :root {
+        --petrol: #102a3d;
+        --petrol-soft: #195778;
+        --ink: #14242e;
+        --paper: #eceeea;
+        --line: #cfd9d7;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: "Ubuntu", system-ui, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1.25rem;
+        line-height: 1.6;
+      }
+      .logo { width: 92px; height: auto; margin-bottom: 1.5rem; }
+      .code {
+        font-family: "Literata", Georgia, serif;
+        font-size: clamp(3.5rem, 12vw, 6rem);
+        font-weight: 700;
+        color: var(--petrol);
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      h1 {
+        font-family: "Literata", Georgia, serif;
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        font-weight: 600;
+        color: var(--petrol);
+        margin: 0.75rem 0 0.5rem;
+      }
+      p { max-width: 30rem; color: #3a4a52; margin-bottom: 2rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: 999px;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn-primary { background: var(--petrol); color: #fff; }
+      .btn-primary:hover { box-shadow: 0 8px 20px rgba(16, 42, 61, 0.25); }
+      .btn-ghost { background: transparent; color: var(--petrol); border: 1px solid var(--line); }
+      .btn-ghost:hover { border-color: var(--petrol-soft); }
+      .links { margin-top: 2.5rem; font-size: 0.95rem; color: #56666e; }
+      .links a { color: var(--petrol-soft); text-decoration: none; margin: 0 0.5rem; }
+      .links a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Renove Clinic" width="92" height="92">
+      <rect width="64" height="64" rx="14" fill="#102a3d"/>
+      <path d="M32 14c-9 6-13 13-13 21a13 13 0 0 0 26 0c0-8-4-15-13-21Z" fill="none" stroke="#a5d6cf" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M32 20c0 9 0 18 0 26" fill="none" stroke="#a5d6cf" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M32 32c3-2 6-3 9-3M32 40c-3-2-6-3-9-3" fill="none" stroke="#a5d6cf" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <div class="code">404</div>
+    <h1>Essa página saiu de cena</h1>
+    <p>O endereço que você tentou abrir não existe ou foi movido. Vamos te levar de volta para um caminho seguro.</p>
+    <div class="actions">
+      <a class="btn btn-primary" data-rel="" href="/">Voltar para o início</a>
+      <a class="btn btn-ghost" href="https://wa.me/5514981540709?text=Ola%2C%20vim%20pelo%20site%20da%20Renove%20Clinic%20e%20quero%20entender%20a%20avaliacao.&utm_source=site&utm_medium=404&utm_campaign=atlas">Falar no WhatsApp</a>
+    </div>
+    <nav class="links" aria-label="Páginas principais">
+      <a data-rel="emagrecimento-bauru/" href="/emagrecimento-bauru/">Emagrecimento</a>·
+      <a data-rel="harmonizacao-facial-bauru/" href="/harmonizacao-facial-bauru/">Harmonização</a>·
+      <a data-rel="blog/" href="/blog/">Blog</a>·
+      <a data-rel="contato/" href="/contato/">Contato</a>
+    </nav>
+    <script>
+      // Em GitHub Pages de projeto o site fica em /<repo>/. O 404 e servido da
+      // raiz do repo, entao detectamos o primeiro segmento e corrigimos os links.
+      (function () {
+        var host = location.hostname;
+        var base = "/";
+        if (host.endsWith("github.io")) {
+          var seg = location.pathname.split("/").filter(Boolean)[0];
+          if (seg) base = "/" + seg + "/";
+        }
+        document.querySelectorAll("a[data-rel]").forEach(function (a) {
+          a.setAttribute("href", base + a.getAttribute("data-rel"));
+        });
+      })();
+    </script>
+  </body>
+</html>
