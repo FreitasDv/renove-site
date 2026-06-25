@@ -948,11 +948,36 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 /* ============================================================
    HERO AVAILABILITY — urgência leve abaixo dos CTAs
    ============================================================ */
-.hero-availability {
-  margin: 0.75rem 0 0;
+/* Microcopy logo abaixo dos CTAs — remove fricção, sem depender da trust-strip */
+.hero-microcopy {
+  margin: 0.6rem 0 0;
   font-size: var(--t-xs);
   color: var(--muted);
   letter-spacing: 0.01em;
+}
+
+.hero-availability {
+  margin: 0.5rem 0 0;
+  font-size: var(--t-xs);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+/* Pulso sutil no indicador de vagas — capta atenção sem ser agressivo */
+.hero-availability::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
+  flex: none;
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.75); }
 }
 .hero-availability strong {
   color: var(--petrol);
@@ -1487,10 +1512,12 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 .stat-item + .stat-item { border-left: 1px solid var(--rule); }
 .stat-item strong {
   font-family: var(--font-display);
-  font-size: var(--t-md);
+  font-size: clamp(1.45rem, 2.2vw, 2.25rem);
   font-weight: 700;
   color: var(--petrol);
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
 .stat-item span {
   font-size: var(--t-xs);
