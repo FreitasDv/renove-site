@@ -847,6 +847,19 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
   .hero-home .hero-copy { max-width: 40rem; }
 }
 
+/* CINEMA (>=2200px): em 2560px o gutter cresce para ~13rem e espreme o
+   texto para <200px. Aumentamos a coluna de texto e travamos o gutter
+   para que a composicao mantenha proporcao 40/60 texto/foto. */
+@media (min-width: 2200px) {
+  .hero.hero-home {
+    grid-template-columns:
+      minmax(var(--gutter), 10rem)
+      minmax(0, 52rem)
+      minmax(0, 1fr);
+  }
+  .hero-home .hero-copy { max-width: 52rem; }
+}
+
 /* ============================================================
    ESPACAMENTO DE SECAO
    ============================================================ */
@@ -1320,6 +1333,68 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 .service-tile.large .tile-cta { color: var(--aqua); }
 .service-tile .tile-cta svg { transition: transform var(--motion-fast); }
 .service-tile:hover .tile-cta svg { transform: translateX(3px); }
+
+/* ---- tile icon ---- */
+.tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: rgba(41, 108, 123, 0.1);
+  color: var(--petrol);
+  flex-shrink: 0;
+  margin-bottom: 0.15rem;
+}
+.service-tile.large .tile-icon {
+  background: rgba(255, 253, 249, 0.1);
+  color: var(--aqua);
+}
+
+/* ---- stat-strip (proof-section) ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-soft);
+  overflow: hidden;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: clamp(1rem, 1.8vw, 1.4rem) clamp(1.2rem, 2vw, 1.6rem);
+  background: var(--surface);
+}
+.stat-item + .stat-item { border-left: 1px solid var(--rule); }
+.stat-item strong {
+  font-family: var(--font-display);
+  font-size: var(--t-md);
+  font-weight: 700;
+  color: var(--petrol);
+  line-height: 1.1;
+}
+.stat-item span {
+  font-size: var(--t-xs);
+  color: var(--muted);
+  line-height: 1.4;
+}
+@media (max-width: 640px) {
+  .stat-strip { grid-template-columns: 1fr 1fr; }
+  .stat-item:nth-child(3) { border-top: 1px solid var(--rule); border-left: none; }
+  .stat-item:nth-child(4) { border-top: 1px solid var(--rule); }
+}
+
+/* ---- cta-reassurance ---- */
+.cta-reassurance {
+  margin: 0.85rem 0 0;
+  font-size: var(--t-sm);
+  color: rgba(255, 250, 243, 0.62);
+  text-align: center;
+}
 
 /* ============================================================
    PROVA / BOTANICA
