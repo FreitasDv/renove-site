@@ -60,6 +60,27 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "Physician",
+        "@id": "https://renoveclinic.com.br/#physician-juliana",
+        "name": "Dra. Juliana Reis",
+        "url": "https://renoveclinic.com.br/sobre/",
+        "medicalSpecialty": "Dietetics",
+        "identifier": [
+          { "@type": "PropertyValue", "name": "CRM-SP", "value": "182823" },
+          { "@type": "PropertyValue", "name": "RQE", "value": "133088" }
+        ],
+        "worksFor": { "@id": "https://renoveclinic.com.br/#clinic" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bauru",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           {
@@ -100,10 +121,28 @@
             "@type": "Question",
             "name": "Em quanto tempo vejo resultado?",
             "acceptedAnswer": { "@type": "Answer", "text": "Os resultados variam conforme histórico, rotina e adesão ao plano. A proposta é um caminho seguro e acompanhado, sem promessa de número fixo." }
+          },
+          {
+            "@type": "Question",
+            "name": "Tem nutricionista ou é só consulta médica?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tem os dois. Médica e nutricionista trabalham juntas no mesmo acompanhamento, com bioimpedância e revisão periódica do plano." }
+          },
+          {
+            "@type": "Question",
+            "name": "Para quem é indicado o acompanhamento na Renove Clinic?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Para quem quer emagrecer com segurança e acompanhamento médico — seja quem já tentou dietas várias vezes, quem tem histórico de doenças metabólicas ou quem quer um plano feito para o próprio caso." }
+          },
+          {
+            "@type": "Question",
+            "name": "A Renove Clinic usa remédio para emagrecer?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Pode usar, quando indicado clinicamente. A decisão depende da avaliação médica e do histórico do paciente. O protocolo é individual — não há fórmula padrão aplicada a todos." }
           }
         ]
       }
     </script>
+      <!-- Google Analytics 4 - substituir G-XXXXXXXXXX pelo ID real -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XXXXXXXXXX",{send_page_view:true});</script>
   </head>
   <body class="page-home">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -384,6 +423,43 @@
             <summary>Em quanto tempo eu vejo resultado?</summary>
             <p>Depende do seu histórico, da sua rotina e da adesão ao plano. A gente não promete número mágico em X semanas. A proposta é um caminho seguro e acompanhado, não um susto que não se sustenta.</p>
           </details>
+          <details>
+            <summary>Tem nutricionista ou é só consulta médica?</summary>
+            <p>Tem os dois. A médica e a nutricionista trabalham juntas no mesmo acompanhamento. Não são atendimentos separados: é uma equipe integrada, com bioimpedância e revisão periódica do plano.</p>
+          </details>
+          <details>
+            <summary>Para quem é indicado o acompanhamento?</summary>
+            <p>Para quem quer emagrecer com segurança e acompanhamento médico — seja quem já tentou dietas várias vezes, quem tem histórico de doenças metabólicas ou quem simplesmente quer um plano feito para o próprio caso, não para uma média.</p>
+          </details>
+          <details>
+            <summary>A Renove usa remédio para emagrecer?</summary>
+            <p>Pode usar, quando indicado clinicamente. A decisão depende da avaliação médica, do histórico do paciente e das metas de saúde. O protocolo é individual — não há fórmula padrão aplicada a todos.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="local-section" aria-labelledby="home-local-title">
+        <div class="local-info">
+          <p class="eyebrow">Atendimento presencial</p>
+          <h2 id="home-local-title">Renove Clinic em Bauru/SP.</h2>
+          <address>
+            Av. Affonso José Aiello, 10-95<br>
+            Vila Aviação, Bauru — SP
+          </address>
+          <p class="local-hours">Seg — Sáb, 9h às 18h · Atendimento com horário marcado</p>
+          <a class="btn btn-secondary" href="https://maps.google.com/?q=Renove+Clinic+Av.+Affonso+José+Aiello+10-95+Vila+Aviação+Bauru+SP" target="_blank" rel="noopener noreferrer">Ver rota no Google Maps</a>
+        </div>
+        <div class="local-map">
+          <iframe
+            title="Localização da Renove Clinic em Bauru"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.0!2d-49.0537!3d-22.3606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDIxJzM4LjIiUyA0OcKwMDMnMTMuMyJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+            width="600"
+            height="350"
+            style="border:0;width:100%;height:350px;border-radius:12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </section>
 

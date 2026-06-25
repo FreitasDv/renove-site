@@ -1,3 +1,76 @@
+/* ============================================================
+   TRACKING GA4 — EVENTOS PERSONALIZADOS
+   Dispara window.gtag() quando disponível (GA4 via GTM ou snippet
+   direto). Se o GA4 ainda não estiver instalado, os eventos ficam
+   em silêncio — sem erro, sem bloqueio.
+
+   Eventos rastreados:
+     whatsapp_click  → qualquer clique em link wa.me (inclui float + sticky)
+     faq_expand      → abertura de qualquer <details> do FAQ
+     pricing_view    → usuário passa pelo bloco de preço (Intersection)
+     form_start      → foco no primeiro campo do lead-form
+   ============================================================ */
+function ga4(name, params) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params);
+  }
+}
+
+// --- whatsapp_click ----------------------------------------
+document.addEventListener("click", (e) => {
+  const link = e.target.closest('a[href^="https://wa.me/"]');
+  if (!link) return;
+  const url = new URL(link.href);
+  ga4("whatsapp_click", {
+    cta_label: link.textContent.trim().slice(0, 60) || link.getAttribute("aria-label") || "unknown",
+    utm_content: url.searchParams.get("utm_content") || "unknown",
+    utm_campaign: url.searchParams.get("utm_campaign") || "unknown",
+  });
+});
+
+// --- faq_expand --------------------------------------------
+document.querySelectorAll(".faq-list details").forEach((det) => {
+  det.addEventListener("toggle", () => {
+    if (det.open) {
+      const q = det.querySelector("summary");
+      ga4("faq_expand", {
+        question: q ? q.textContent.trim().slice(0, 80) : "unknown",
+      });
+    }
+  });
+});
+
+// --- pricing_view (observa o primeiro bloco de preço) ------
+(() => {
+  const priceEl =
+    document.querySelector(".pricing-highlight") ||
+    document.querySelector("[class*=price]") ||
+    document.querySelector(".service-card");
+  if (!priceEl || typeof IntersectionObserver === "undefined") return;
+  let fired = false;
+  new IntersectionObserver(
+    (entries) => {
+      if (!fired && entries[0].isIntersecting) {
+        fired = true;
+        ga4("pricing_view", { section: priceEl.closest("section")?.id || "unknown" });
+      }
+    },
+    { threshold: 0.4 }
+  ).observe(priceEl);
+})();
+
+// --- form_start --------------------------------------------
+(() => {
+  const form = document.getElementById("lead-form");
+  if (!form) return;
+  let started = false;
+  form.addEventListener("focusin", () => {
+    if (started) return;
+    started = true;
+    ga4("form_start", { form_id: "lead-form" });
+  });
+})();
+
 const menuButton = document.querySelector(".menu-button");
 
 if (menuButton) {

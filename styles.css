@@ -2440,6 +2440,33 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   background: var(--surface);
   border-radius: var(--radius-soft);
   border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .local-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.local-info { display: flex; flex-direction: column; gap: 0; }
+
+.local-map iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: var(--radius-soft);
+  display: block;
+}
+
+.local-hours {
+  font-size: var(--t-small);
+  color: var(--reading-muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
 }
 
 .local-section .eyebrow { color: var(--petrol); }
