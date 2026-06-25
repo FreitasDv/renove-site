@@ -859,6 +859,8 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
       minmax(0, 1fr);
   }
   .hero-home .hero-copy { max-width: 52rem; }
+  /* Ajusta object-position para nao cortar a doutora no ultrawide */
+  .hero-home .hero-visual img { object-position: 40% top; }
 }
 
 /* ============================================================
