@@ -57,6 +57,86 @@ document.querySelectorAll('a[href^="https://wa.me/5514981540709"]').forEach((lin
   link.href = url.toString();
 });
 
+/* ============================================================
+   FORMULARIO DE CAPTURA DE LEAD
+   Estrategia atual (sem backend): o form valida nome + WhatsApp,
+   monta uma mensagem personalizada e abre o WhatsApp da clinica ja
+   preenchido, herdando os mesmos UTMs dos demais CTAs. Assim nenhum
+   visitante que preenche "some": cai direto na conversa.
+
+   >>> PONTO DE INTEGRACAO REAL <<<
+   Quando o Joao definir o destino (CRM / GoSac / Formspree / endpoint
+   proprio), enviar tambem um fetch(POST) com {name, phone, goal, utms}
+   no ponto marcado abaixo, ANTES de abrir o WhatsApp. O resto do fluxo
+   nao precisa mudar.
+   ============================================================ */
+(() => {
+  const form = document.getElementById("lead-form");
+  if (!form) return;
+
+  const WA_BASE = "https://wa.me/5514981540709";
+  const note = form.querySelector(".lead-note");
+
+  const goalText = {
+    emagrecimento: "Tenho interesse em emagrecimento com acompanhamento.",
+    estetica: "Tenho interesse em harmonizacao / estetica.",
+    ambos: "Tenho interesse em emagrecimento e tambem em estetica.",
+  };
+
+  // Coleta os UTMs vigentes (mesma fonte de verdade dos links).
+  const collectUtms = () => {
+    const p = new URLSearchParams(window.location.search);
+    const keep = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "gbraid", "wbraid"];
+    const out = new URLSearchParams();
+    for (const k of keep) if (p.has(k)) out.set(k, p.get(k));
+    // Defaults proprios deste form quando a URL nao traz origem.
+    if (!out.has("utm_source")) out.set("utm_source", "site");
+    if (!out.has("utm_medium")) out.set("utm_medium", "cta");
+    if (!out.has("utm_campaign")) out.set("utm_campaign", "atlas_home");
+    out.set("utm_content", "lead_form");
+    return out;
+  };
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = form.elements.name.value.trim();
+    const phone = form.elements.phone.value.trim();
+    const goal = form.elements.goal.value;
+
+    if (name.length < 2) {
+      note.textContent = "Pode colocar seu nome pra gente te chamar direito?";
+      form.elements.name.focus();
+      return;
+    }
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length < 10) {
+      note.textContent = "Confere o WhatsApp com DDD, por favor.";
+      form.elements.phone.focus();
+      return;
+    }
+
+    const lines = [
+      `Ola! Sou ${name} e vim pelo site da Renove Clinic.`,
+      goalText[goal] || "Quero entender a avaliacao presencial.",
+      `Meu WhatsApp: ${phone}.`,
+    ];
+    const message = lines.join(" ");
+
+    // >>> INTEGRACAO REAL ENTRA AQUI <<<
+    // Ex.: fetch("/api/lead", {method:"POST", headers:{"Content-Type":"application/json"},
+    //   body: JSON.stringify({ name, phone, goal, utms: Object.fromEntries(collectUtms()) })});
+
+    const url = new URL(WA_BASE);
+    const params = collectUtms();
+    params.set("text", message);
+    url.search = params.toString();
+
+    note.textContent = "Boa! Abrindo o WhatsApp pra finalizar...";
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
+  });
+})();
+
 document.querySelectorAll(".main-nav a").forEach((link) => {
   link.addEventListener("click", () => {
     document.body.classList.remove("nav-open");

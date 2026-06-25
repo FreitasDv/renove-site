@@ -337,6 +337,7 @@ h3 { font-size: var(--t-md); line-height: 1.25; }
   z-index: 40;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(1rem, 2.5vw, 2.25rem);
   padding: 0.8rem clamp(1rem, 4vw, 3rem);
   background: var(--surface);
@@ -350,7 +351,6 @@ h3 { font-size: var(--t-md); line-height: 1.25; }
   gap: 0.7rem;
   min-height: 44px;
   text-decoration: none;
-  margin-right: auto;
 }
 
 .brand img {
@@ -596,6 +596,56 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
 .trust-strip span + span::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-right: 1.1rem;
+  border-radius: 50%;
+  background: var(--clay);
+  flex: none;
+}
+
+/* Google rating pill — no trust-strip do hero */
+.google-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.6rem;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.google-rating:hover {
+  border-color: var(--ocean);
+  box-shadow: 0 2px 8px rgba(15, 36, 53, .1);
+}
+.google-rating .stars {
+  display: inline-flex;
+  gap: 1px;
+  color: #f5a623;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+.google-rating .score {
+  font-size: var(--t-sm);
+  font-weight: 800;
+  color: var(--petrol);
+}
+.google-rating .label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* No trust-strip, o pill Google não tem separador antes dele */
+.trust-strip .google-rating::before { display: none !important; }
+/* Mas os spans que vêm DEPOIS do pill precisam do separador */
+.trust-strip .google-rating + span::before {
   content: "";
   width: 4px;
   height: 4px;
@@ -2768,7 +2818,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
    RESPONSIVO
    ============================================================ */
 @media (max-width: 980px) {
-  .site-header { position: sticky; flex-wrap: wrap; }
+  .site-header { position: sticky; flex-wrap: wrap; justify-content: space-between; }
 
   .diff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -2872,7 +2922,8 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   .hero-actions,
   .hero-actions .btn { width: 100%; }
 
-  .menu-button { width: auto; }
+  /* tap target: manter 44x44 mesmo em 640px — width:auto colapsava pra 22px */
+  .menu-button { width: 44px; min-width: 44px; }
 
   .hero-visual figcaption { position: static; margin-top: 0.75rem; max-width: none; }
 
