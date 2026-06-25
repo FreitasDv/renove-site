@@ -510,7 +510,8 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 .btn-ghost {
   background: transparent;
   color: var(--ocean);
-  border-color: var(--rule);
+  border-color: var(--ocean);
+  border-width: 1.5px;
 }
 
 .btn-secondary:hover,
@@ -815,14 +816,14 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     height: 100%;
     aspect-ratio: auto;
     object-fit: cover;
-    object-position: 50% 20%;
+    object-position: 30% 20%;
     border: 0;
     outline: 0;
     border-radius: 0;
     box-shadow: none;
     filter: none;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 17%);
-    mask-image: linear-gradient(to right, transparent, #000 17%);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%);
+    mask-image: linear-gradient(to right, transparent, #000 10%);
   }
 
   .hero-home .hero-visual figcaption {
@@ -945,9 +946,73 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 }
 
 /* ============================================================
+   HERO AVAILABILITY — urgência leve abaixo dos CTAs
+   ============================================================ */
+.hero-availability {
+  margin: 0.75rem 0 0;
+  font-size: var(--t-xs);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+.hero-availability strong {
+  color: var(--petrol);
+  font-weight: 600;
+}
+
+/* ============================================================
+   PROOF NUMBERS — barra de stats entre decision-rail e atlas
+   ============================================================ */
+.proof-numbers {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-top: 1px solid var(--sand-20, rgba(174, 147, 115, 0.18));
+  border-bottom: 1px solid var(--sand-20, rgba(174, 147, 115, 0.18));
+}
+.proof-numbers article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0 clamp(0.75rem, 2vw, 1.75rem);
+}
+.proof-numbers article + article {
+  border-left: 1px solid var(--sand-20, rgba(174, 147, 115, 0.22));
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--petrol);
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-size: var(--t-sm);
+  color: var(--muted);
+  line-height: 1.4;
+}
+@media (max-width: 600px) {
+  .proof-numbers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 0;
+  }
+  /* em 2 colunas: remove border-left da 1a coluna de cada linha */
+  .proof-numbers article:nth-child(odd) { border-left: none; }
+  .proof-numbers article { padding: 0 0.75rem; }
+}
+
+/* ============================================================
    ATLAS BAND - faixa de numeros (editorial, nao cartao)
    ============================================================ */
 .atlas-band { position: relative; }
+
+/* Heading do atlas ocupa mais largura: o título é longo e
+   o espaço disponível é 1140px — 40ch era muito apertado. */
+.atlas-band .section-heading { max-width: 72ch; }
 
 .atlas-map {
   display: grid;
@@ -1021,7 +1086,35 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
    para nao ilhar os 3 tiles no centro em telas grandes/ultrawide. */
 .split-section.warm {
   padding-inline: max(1.5rem, calc((100% - var(--container-wide)) / 2));
+  /* nth-of-type(even) tem especificidade (0,2,1) e ganharia.
+     Usamos !important pontual (só nesta propriedade) para garantir sand. */
+  background: var(--sand) !important;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Profundidade aquarela warm: 3 véus radiais leves sobre o sand base.
+   ::before = véu terracota (canto sup-esq) + véu areia fria (canto inf-dir).
+   ::after  = véu âmbar central quente (sutil). */
+.split-section.warm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 12% 18%, rgba(179, 113, 78, 0.32) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 60% at 85% 82%, rgba(140, 100, 72, 0.22) 0%, transparent 65%);
+  z-index: 0;
+}
+.split-section.warm::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 50% 50% at 50% 45%, rgba(205, 163, 105, 0.18) 0%, transparent 70%);
+  z-index: 0;
+}
+.split-section.warm > * { position: relative; z-index: 1; }
 
 /* Alternancia automatica: seccoes quentes pares viram glacial, quebrando a
    monotonia do bege no site inteiro sem mexer no HTML de cada pagina. */
@@ -1082,7 +1175,29 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   border-radius: var(--radius-soft);
   padding: clamp(2rem, 5vw, 3.5rem);
   margin-block: var(--space-block);
+  position: relative;
+  overflow: hidden;
 }
+/* Profundidade aquarela glacial: aqua quente no topo-dir, cool no baixo-esq, âmbar central */
+.page-home .proof-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 50% at 88% 15%, rgba(41, 108, 123, 0.24) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 55% at 8%  85%, rgba(173, 211, 209, 0.28) 0%, transparent 65%);
+  z-index: 0;
+}
+.page-home .proof-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 45% 45% at 50% 50%, rgba(205, 163, 105, 0.10) 0%, transparent 70%);
+  z-index: 0;
+}
+.page-home .proof-section > * { position: relative; z-index: 1; }
 .page-home .proof-section h2, .page-home .proof-section h3 { color: var(--ink); }
 .page-home .proof-section p { color: var(--reading); }
 
@@ -1743,6 +1858,143 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 
 /* ============================================================
+   SLOT MATERIAL REAL — Resultados numéricos + depoimentos (HOME)
+   Oculto via [hidden] até o material real chegar. Cards em estado
+   .is-skeleton mostram placeholder elegante, sem texto falso.
+   ============================================================ */
+.outcomes-section { padding: var(--space-section) 0; }
+
+/* Resultados numéricos: número grande + contexto clínico + disclaimer */
+.outcomes-grid {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+.outcome-card {
+  box-sizing: border-box;
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  background: var(--surface);
+  border: 1px solid var(--ocean-12);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.outcome-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.outcome-value {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--petrol);
+}
+.outcome-unit {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: none;
+}
+.outcome-context {
+  margin: 0;
+  color: var(--reading);
+  font-size: var(--t-base);
+  line-height: 1.5;
+}
+.outcome-disclaimer {
+  margin: auto 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: var(--t-xs);
+  line-height: 1.4;
+}
+
+/* Depoimentos: 3 cards lado a lado */
+.testi-grid {
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+.testi-card {
+  box-sizing: border-box;
+  position: relative;
+  padding: clamp(1.6rem, 3.5vw, 2.4rem);
+  background: var(--surface);
+  border: 1px solid var(--ocean-12);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+}
+.testi-quote-mark {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  line-height: 0.6;
+  color: var(--aqua);
+  display: block;
+  height: 1.4rem;
+  user-select: none;
+}
+.testi-card blockquote {
+  margin: 0;
+}
+.testi-card blockquote p {
+  margin: 0 0 1rem;
+  color: var(--reading);
+  font-style: italic;
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
+}
+.testi-card cite {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+.testi-card footer small {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: var(--t-xs);
+  line-height: 1.4;
+}
+
+/* Estado skeleton: placeholder calmo, sem conteúdo falso visível como real */
+.is-skeleton { position: relative; }
+.is-skeleton [data-fill] {
+  color: transparent;
+  background: linear-gradient(90deg, var(--glacier-soft) 25%, var(--glacier) 50%, var(--glacier-soft) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius);
+  animation: outcome-shimmer 1.6s ease-in-out infinite;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.outcome-card.is-skeleton .outcome-value { color: transparent; }
+.testi-card.is-skeleton .testi-quote-mark { color: var(--glacier); }
+@keyframes outcome-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-skeleton [data-fill] { animation: none; }
+}
+
+@media (max-width: 860px) {
+  .outcomes-grid,
+  .testi-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
    CARE / FIT / QUALIFIER
    ============================================================ */
 .care-layout {
@@ -1752,6 +2004,15 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   align-items: start;
 }
 .care-intro { max-width: 60ch; }
+
+@media (min-width: 1024px) {
+  .care-layout {
+    /* Intro (esquerda) + care-grid (direita): intro mais estreita, grid domina */
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: start;
+  }
+  .care-intro { max-width: none; }
+}
 .care-section .care-title,
 .care-section h2 { text-wrap: balance; }
 .care-section .care-note { text-wrap: pretty; max-width: 60ch; }
@@ -1771,6 +2032,9 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 
 @media (min-width: 1024px) {
   .care-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* Quando care-grid vive dentro do care-layout 2-col, a coluna direita (~653px)
+     é larga demais para 4 cards e estreita demais para leitura — 2x2 é melhor. */
+  .care-layout .care-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .care-grid article,
@@ -1941,10 +2205,47 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   font-family: var(--font-display);
   font-size: var(--t-xl);
   font-weight: 700;
-  margin-top: 1rem;
+  margin: 0 0 1rem;
 }
 
-.plan-cta { margin-top: 1.25rem; align-self: flex-start; }
+.plan-cta { align-self: flex-start; }
+
+/* Agrupa preço + botão e empurra para o fundo do card */
+.plan-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Lista de benefícios do plano */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.plan-features li {
+  font-size: var(--t-sm);
+  color: var(--muted);
+  padding-left: 1.3rem;
+  position: relative;
+  line-height: 1.45;
+}
+.plan-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--terracota);
+  font-weight: 700;
+  font-size: 0.8em;
+  top: 0.1em;
+}
+.plan-card.featured-plan .plan-features li { color: rgba(255,250,243,0.8); }
+.plan-card.featured-plan .plan-features li::before { color: var(--aqua); }
 
 .micro-note {
   max-width: 760px;
@@ -2923,6 +3224,25 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   .site-header { position: sticky; flex-wrap: wrap; justify-content: space-between; }
 
   .diff-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Hero mobile: foto sobe para cima do copy (order:-1) com altura controlada
+     para aparecer na dobra. A máscara lateral não faz sentido em 1 coluna. */
+  .hero-home .hero-visual {
+    order: -1;
+    height: clamp(160px, 38vw, 240px);
+    width: 100%;
+    margin: 0;
+  }
+  .hero-home .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 15%;
+    border-radius: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero-home .hero-copy { padding-top: 1.5rem; }
 
   .menu-button { display: inline-flex; order: 3; }
 

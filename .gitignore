@@ -19,3 +19,9 @@ Thumbs.db
 # Internos - nao publicar
 _refs/
 brief/
+.claude/
+COMO_USAR_NO_CLAUDE_CODE_R9_SITE.md
+MATERIAL-NECESSARIO.md
+R9_SITE_BENCHMARK_30_REFERENCIAS.md
+RENOVE_R9_SITE_AUTONOMOUS_REBUILD.md
+gtm-export.json
