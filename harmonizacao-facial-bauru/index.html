@@ -26,6 +26,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
+    <!-- LCP preload -->
+    <link rel="preload" as="image" href="../assets/equipe-renove-960.webp"
+          imagesrcset="../assets/equipe-renove-960.webp 960w, ../assets/equipe-renove-1440.webp 1440w, ../assets/equipe-renove.webp 2160w"
+          imagesizes="(max-width: 760px) 92vw, 70vw"
+          type="image/webp">
     <link rel="stylesheet" href="../styles.css">
     <script src="../script.js" defer></script>
     <script type="application/ld+json">
@@ -138,12 +143,17 @@
           <p>O cuidado estético da Renove parte de proporção, naturalidade e segurança. A avaliação entende expectativas, histórico e limites antes de orientar qualquer procedimento. Aqui a decisão é da paciente, com critério profissional.</p>
           <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20a%20avaliacao%20de%20harmonizacao%20facial%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=hof_bauru&utm_content=hero">Agendar avaliação</a>
           <div class="trust-strip" aria-label="Credenciais da Renove">
+            <a class="google-rating" href="https://www.google.com/search?kgmid=/g/11ybrxv1wg#lrd=0x0:0x0,1" target="_blank" rel="noopener" aria-label="4,9 estrelas no Google — ver avaliações">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <span class="score">4,9</span>
+              <span class="label">no Google</span>
+            </a>
             <span>Dra. Juliana Reis</span>
             <span>CRM-SP 182.823</span>
             <span>RQE 133.088</span>
           </div>
         </div>
-        <img class="subpage-photo" src="../assets/equipe-renove.webp" srcset="../assets/equipe-renove-960.webp 960w, ../assets/equipe-renove-1440.webp 1440w, ../assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 70vw" width="1920" height="1080" alt="Renove Clinic em Bauru" loading="lazy">
+        <img class="subpage-photo" src="../assets/equipe-renove.webp" srcset="../assets/equipe-renove-960.webp 960w, ../assets/equipe-renove-1440.webp 1440w, ../assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 70vw" width="1920" height="1080" alt="Renove Clinic em Bauru" loading="eager" fetchpriority="high" decoding="async">
       </section>
 
       <section class="signal-row" aria-label="Resumo da avaliação estética">
@@ -245,6 +255,7 @@
         <div class="footer-col">
           <h2>Contato</h2>
           <a href="https://wa.me/5514981540709?text=Ola%2C%20vim%20pelo%20site%20da%20Renove%20Clinic.&utm_source=site&utm_medium=cta&utm_campaign=atlas_harmonizacao&utm_content=footer">WhatsApp (14) 98154-0709</a>
+          <a href="tel:+5514981540709">(14) 98154-0709</a>
           <p>Av. Affonso José Aiello, 10-95<br>Vila Aviação, Bauru - SP</p>
         </div>
       </div>
