@@ -109,8 +109,8 @@
 /* Cinema (>=2400): mais um degrau para 2560+, sem esticar o texto. */
 @media (min-width: 2400px) {
   :root {
-    --container: 1320px;
-    --container-wide: 1860px;
+    --container: 1360px;
+    --container-wide: 2000px;
   }
 }
 
@@ -308,6 +308,10 @@ h3 { font-size: var(--t-md); line-height: 1.25; }
   max-width: 40ch;
   margin-bottom: var(--space-block);
 }
+
+.section-heading h2,
+.hero-home h1 { text-wrap: balance; }
+.section-heading p { text-wrap: pretty; }
 
 .section-heading.align-center {
   margin-inline: auto;
@@ -679,10 +683,10 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 
 /* MOVE 3 — salto brutal de tipografia (vale em todas as larguras) */
 .hero-home h1 {
-  font-size: clamp(2.5rem, 1.3rem + 4.8vw, 4.6rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  max-width: 15ch;
+  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  max-width: 16ch;
 }
 .hero-home h1 .editorial { font-size: 0.82em; }
 .hero-home .hero-lead {
@@ -1618,10 +1622,14 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
    ============================================================ */
 .care-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3.25rem);
   align-items: start;
 }
+.care-intro { max-width: 60ch; }
+.care-section .care-title,
+.care-section h2 { text-wrap: balance; }
+.care-section .care-note { text-wrap: pretty; max-width: 60ch; }
 
 .care-note {
   border-left: 3px solid var(--clay);
@@ -1634,6 +1642,10 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .care-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 .care-grid article,
