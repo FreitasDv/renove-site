@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emagrecimento médico em Bauru | Dra. Juliana Reis — Renove Clinic</title>
-    <meta name="description" content="Emagrecimento com acompanhamento médico em Bauru/SP. Dra. Juliana Reis (CRM-SP 182.823): bioimpedância semanal, protocolo individual, sem dieta de prateleira. Avalie sem compromisso.">
+    <meta name="description" content="Emagrecimento com acompanhamento médico em Bauru/SP. Dra. Juliana Reis (CRM-SP 182.823): bioimpedância semanal e protocolo individual, sem dieta de prateleira.">
     <link rel="canonical" href="https://renoveclinic.com.br/emagrecimento-bauru/">
 
     <meta name="theme-color" content="#102a3d">
-    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="../assets/logo-renove.png" sizes="any">
-    <link rel="apple-touch-icon" href="../assets/logo-renove.png">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/logo-renove.png" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/logo-renove.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Renove Clinic">
     <meta property="og:locale" content="pt_BR">
@@ -29,12 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
     <!-- LCP preload -->
-    <link rel="preload" as="image" href="../assets/equipe-renove-960.webp"
+    <link rel="preload" as="image" href="/assets/equipe-renove-960.webp"
           imagesrcset="../assets/equipe-renove-960.webp 960w, ../assets/equipe-renove-1440.webp 1440w, ../assets/equipe-renove.webp 2160w"
           imagesizes="(max-width: 760px) 92vw, 46vw"
           type="image/webp">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <script src="../script.js" defer></script>
+    <script src="../imc-embed.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -79,7 +80,7 @@
             "name": "Quanto custa o acompanhamento de emagrecimento na Renove Clinic?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Os planos começam em R$997, com o acompanhamento semanal completo em R$2.797. O valor final é definido na avaliação, conforme o formato indicado para o seu caso."
+              "text": "O investimento é explicado na avaliação. O formato indicado para o seu caso é definido pessoalmente, conforme a situação de cada paciente. A Renove mostra a faixa de investimento com transparência e não define conduta nem pacote no escuro."
             }
           },
           {
@@ -121,10 +122,12 @@
       {
         "@context": "https://schema.org",
         "@type": "Service",
+        "additionalType": "https://schema.org/MedicalTherapy",
         "@id": "https://renoveclinic.com.br/emagrecimento-bauru/#service",
         "name": "Emagrecimento médico com acompanhamento",
         "description": "Programa de emagrecimento com acompanhamento médico e nutricional presencial em Bauru/SP. Avaliação individual, protocolo personalizado e equipe com CRM-SP 182.823.",
         "serviceType": "Gerenciamento de peso com avaliação e acompanhamento",
+        "category": "https://schema.org/MedicalTherapy",
         "provider": {
           "@id": "https://renoveclinic.com.br/#clinic"
         },
@@ -135,17 +138,9 @@
         },
         "offers": {
           "@type": "Offer",
-          "price": "997",
-          "priceCurrency": "BRL",
-          "description": "Plano inicial de emagrecimento médico a partir de R$997",
+          "availability": "https://schema.org/InStoreOnly",
+          "description": "Acompanhamento médico e nutricional definido após avaliação presencial",
           "url": "https://renoveclinic.com.br/emagrecimento-bauru/"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "bestRating": "5",
-          "worstRating": "1",
-          "ratingCount": "47"
         }
       }
     </script>
@@ -169,6 +164,32 @@
         ]
       }
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "@id": "https://renoveclinic.com.br/emagrecimento-bauru/#webpage",
+        "name": "Emagrecimento médico com acompanhamento em Bauru",
+        "url": "https://renoveclinic.com.br/emagrecimento-bauru/",
+        "inLanguage": "pt-BR",
+        "lastReviewed": "2026-06-27",
+        "reviewedBy": {
+          "@type": "Physician",
+          "name": "Dra. Juliana Reis",
+          "identifier": "CRM-SP 182.823 / RQE 133.088"
+        },
+        "about": {
+          "@id": "https://renoveclinic.com.br/emagrecimento-bauru/#service"
+        },
+        "mainContentOfPage": {
+          "@type": "WebPageElement",
+          "cssSelector": "main"
+        },
+        "isPartOf": {
+          "@id": "https://renoveclinic.com.br/#clinic"
+        }
+      }
+    </script>
   <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJ77VNSV');</script>
     <!-- End Google Tag Manager -->
@@ -179,7 +200,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-header">
-      <a class="brand" href="../" aria-label="Renove Clinic - inicio">
+      <a class="brand" href="/" aria-label="Renove Clinic - inicio">
         <img src="../assets/logo-renove.png" width="116" height="124" alt="" loading="eager" decoding="async" aria-hidden="true">
         <span class="brand-lockup">
           <span class="brand-name">Renove</span>
@@ -187,11 +208,11 @@
         </span>
       </a>
       <nav class="main-nav" id="main-nav" aria-label="Navegacao principal">
-        <a href="../emagrecimento-bauru/">Emagrecimento</a>
-        <a href="../harmonizacao-facial-bauru/">Harmonização</a>
-        <a href="../blog/">Blog</a>
-        <a href="../sobre/">Sobre</a>
-        <a href="../contato/">Contato</a>
+        <a href="/emagrecimento-bauru/">Emagrecimento</a>
+        <a href="/harmonizacao-facial-bauru/">Harmonização</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sobre/">Sobre</a>
+        <a href="/contato/">Contato</a>
       </nav>
       <a class="header-cta" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20agendar%20minha%20avaliacao%20de%20emagrecimento%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=header">
         <svg class="wa-glyph" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2c-5.46 0-9.9 4.43-9.9 9.9 0 1.74.46 3.45 1.32 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.43 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.45 1.32-2 1.4-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.62-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.78-.37.2 0 .39 0 .56.01.18.01.42-.07.66.5.25.59.84 2.04.91 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.7.8 2 .95.3.15.5.22.57.35.07.12.07.71-.18 1.4Z"/></svg>
@@ -206,24 +227,33 @@
       <section class="hero lp-hero">
         <div class="hero-copy">
           <p class="eyebrow">Emagrecimento médico · Bauru/SP</p>
-          <h1>Você já emagreceu antes. <span class="editorial">O difícil foi manter.</span></h1>
-          <p class="hero-lead">Emagrecimento com acompanhamento médico em Bauru: médica e nutricionista juntas, bioimpedância semanal e atenção a vitaminas, hormônios, sono e ansiedade. O plano é seu, montado na avaliação, conforme o seu caso e a sua história.</p>
+          <h1>Emagrecimento médico com acompanhamento <span class="editorial">de perto.</span></h1>
+          <p class="hero-lead">Para quem quer começar com segurança ou retomar depois de outras tentativas. A Renove une médica, nutricionista, bioimpedância e avaliação presencial para construir um plano compatível com seu histórico, sua rotina e seus objetivos.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20agendar%20minha%20avaliacao%20de%20emagrecimento%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=hero_primary">Agendar minha avaliação</a>
             <a class="btn btn-secondary" href="#como-funciona">Ver como funciona</a>
           </div>
           <div class="trust-strip" aria-label="Credenciais e localizacao">
-            <a class="google-rating" href="https://www.google.com/search?kgmid=/g/11ybrxv1wg#lrd=0x0:0x0,1" target="_blank" rel="noopener" aria-label="4,9 estrelas no Google — ver avaliações">
-              <span class="stars" aria-hidden="true">★★★★★</span>
-              <span class="score">4,9</span>
-              <span class="label">no Google</span>
-            </a>
             <span>CRM-SP 182.823</span>
             <span>RQE 133.088</span>
             <span>Nutrologia pelo Einstein</span>
             <span>Mestrado USP-Bauru</span>
             <span>Vila Aviação</span>
           </div>
+          <dl class="summary-list-lite hero-summary-list" aria-label="Resumo do acompanhamento de emagrecimento">
+            <div>
+              <dt>Para quem</dt>
+              <dd>Quem quer começar ou retomar com acompanhamento</dd>
+            </div>
+            <div>
+              <dt>Ponto de entrada</dt>
+              <dd>Avaliação presencial para entender histórico e objetivo</dd>
+            </div>
+            <div>
+              <dt>Acompanhamento</dt>
+              <dd>Formato definido conforme o caso, com orientação clara na consulta</dd>
+            </div>
+          </dl>
         </div>
         <figure class="hero-visual protocol-panel">
           <img src="../assets/equipe-renove.webp" srcset="../assets/equipe-renove-960.webp 960w, ../assets/equipe-renove-1440.webp 1440w, ../assets/equipe-renove.webp 2160w" sizes="(max-width: 760px) 92vw, 46vw" width="1440" height="960" alt="Equipe Renove Clinic em Bauru" loading="eager" fetchpriority="high">
@@ -241,19 +271,19 @@
 
       <section class="qualifier-section" aria-labelledby="qualifier-title">
         <div class="section-heading">
-          <p class="eyebrow">Antes de chamar</p>
-          <h2 id="qualifier-title">Veja se a Renove é pra você antes de mandar mensagem.</h2>
+          <p class="eyebrow">Quando faz sentido</p>
+          <h2 id="qualifier-title">Procure a Renove quando você quer um plano acompanhado, não uma orientação solta.</h2>
         </div>
         <div class="fit-grid">
           <article class="fit-card">
-            <span>Para quem faz sentido</span>
-            <strong>Você já tentou emagrecer sozinha e o peso voltou.</strong>
-            <p>A Renove não vende atalho. O caminho começa por avaliação, histórico e plano individual, feito para manter, não só para perder.</p>
+            <span>Começo ou retomada</span>
+            <strong>Você pode estar começando agora ou voltando depois de outras tentativas.</strong>
+            <p>A primeira etapa é entender seu histórico, sua rotina e o que precisa mudar para o plano ser possível na vida real.</p>
           </article>
           <article class="fit-card">
-            <span>Investimento</span>
-            <strong>Planos a partir de R$997, com formato definido conforme o seu caso.</strong>
-            <p>O valor é o ponto de partida. O plano completo é montado depois da consulta, assim você sabe exatamente o que faz sentido para o seu objetivo.</p>
+            <span>Formato</span>
+            <strong>Depende do seu caso.</strong>
+            <p>Na consulta a gente te mostra o caminho que faz sentido pra você: quanto de acompanhamento, com que frequência, do jeito que cabe na sua rotina.</p>
           </article>
           <article class="fit-card">
             <span>Local</span>
@@ -262,25 +292,71 @@
           </article>
           <article class="fit-card">
             <span>Segurança</span>
-            <strong>Qualquer conduta depende de avaliação profissional.</strong>
-            <p>Dúvidas iniciais podem ir pelo WhatsApp; decisões clínicas ficam para consulta.</p>
+            <strong>Toda decisão passa por uma consulta de verdade.</strong>
+            <p>Dúvida inicial pode vir pelo WhatsApp; o que é clínico a gente resolve junto, na consulta — sua saúde não é pra resolver no chute.</p>
           </article>
         </div>
+      </section>
+
+      <!-- ====================== IMC EMBUTIDO ======================
+           Ferramenta embutida no fluxo (NN/g: ferramenta no contexto,
+           nao em pagina-vitrine). Valor primeiro: resultado imediato e
+           contextualizado, sem cadastro. O CTA leva ao WhatsApp com o
+           feedback do IMC anexado -> lead estruturado p/ o fluxo de bot.
+           Largura travada no container normal + componente estreito,
+           para nao herdar o card "inchado" da .tool-section. -->
+      <section class="imc-embed" id="calcule-seu-imc" aria-labelledby="imc-embed-title">
+        <div class="section-heading">
+          <p class="eyebrow">Um ponto de partida</p>
+          <h2 id="imc-embed-title">Calcule seu IMC e veja onde você está agora.</h2>
+          <p class="section-intro">Uma primeira referência sobre a relação entre peso e altura. Não separa músculo de gordura, então é só o começo da conversa — a leitura completa vem da avaliação presencial.</p>
+        </div>
+        <div class="imc-tool">
+          <form class="imc-form" id="imc-form" novalidate>
+            <div class="imc-field">
+              <label for="imc-peso">Peso (kg)</label>
+              <input type="number" id="imc-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off">
+            </div>
+            <div class="imc-field">
+              <label for="imc-altura">Altura (cm)</label>
+              <input type="number" id="imc-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary imc-submit">Calcular meu IMC</button>
+          </form>
+          <output class="imc-result" id="imc-result" hidden aria-live="polite">
+            <div class="imc-result-head">
+              <span class="imc-result-value" id="imc-value">—</span>
+              <span class="imc-result-tag" id="imc-tag">—</span>
+            </div>
+            <div class="imc-scale" aria-hidden="true">
+              <span class="imc-scale-fill" id="imc-scale"></span>
+            </div>
+            <ul class="imc-scale-legend" aria-hidden="true">
+              <li>Baixo</li>
+              <li>Adequado</li>
+              <li>Sobrepeso</li>
+              <li>Obesidade</li>
+            </ul>
+            <p class="imc-result-text" id="imc-text"></p>
+            <a class="btn btn-secondary imc-cta" id="imc-cta" data-cta="tool_imc" href="#" target="_blank" rel="noopener">Conversar sobre o meu caso</a>
+          </output>
+        </div>
+        <p class="imc-embed-more">Quer ir além do IMC? Veja também o <a href="/ferramentas/">gasto calórico estimado e o tempo aproximado para a sua meta</a> — três calculadoras educativas para chegar à avaliação com mais clareza.</p>
       </section>
 
       <section class="timeline-section" id="como-funciona" aria-labelledby="timeline-title">
         <div class="section-heading align-left">
           <p class="eyebrow">Como funciona</p>
-          <h2 id="timeline-title">Um processo desenhado para reduzir improviso.</h2>
+          <h2 id="timeline-title">Passo a passo, sem você se sentir perdida.</h2>
         </div>
         <ol class="timeline">
           <li>
             <strong>Conversa inicial pelo WhatsApp</strong>
-            <p>A equipe entende objetivo, disponibilidade e expectativa. Para confirmar o horário, há uma taxa de reserva simbólica, abatida integralmente na consulta com a Dra. Juliana.</p>
+            <p>A gente entende seu objetivo, sua disponibilidade e o que você espera. Pra confirmar o horário, há uma taxa de reserva simbólica, abatida integralmente na consulta com a Dra. Juliana.</p>
           </li>
           <li>
             <strong>Avaliação</strong>
-            <p>Histórico, rotina, exames e contexto clínico entram na decisão profissional.</p>
+            <p>A médica olha seu histórico, sua rotina e seus exames antes de indicar qualquer coisa.</p>
           </li>
           <li>
             <strong>Plano individual</strong>
@@ -288,13 +364,13 @@
           </li>
           <li>
             <strong>Acompanhamento</strong>
-            <p>Ajustes e retornos ajudam a manter constância sem promessa simplista.</p>
+            <p>Nos retornos a gente ajusta a rota — é o que ajuda você a não desistir no meio do caminho.</p>
           </li>
         </ol>
       </section>
 
       
-      <section class="differentials-section warm" aria-labelledby="diff-title">
+      <section class="differentials-section warm depth-tint" aria-labelledby="diff-title">
         <div class="section-heading align-center">
           <p class="eyebrow">O que faz diferença</p>
           <h2 id="diff-title">Mais do que um protocolo de peso.</h2>
@@ -324,248 +400,189 @@
       </section>
 
       <section class="proof-section" aria-labelledby="return-title">
+        <img class="botanical botanical-lp-proof botanical-soft" src="../assets/folhas-renove.webp" width="640" height="640" alt="" loading="lazy" aria-hidden="true">
         <div class="section-heading">
-          <p class="eyebrow">Por que o peso volta</p>
-          <h2 id="return-title">Se já voltou antes, o plano é que precisa mudar.</h2>
+          <p class="eyebrow">Por que acompanhar muda o processo</p>
+          <h2 id="return-title">O plano precisa caber no corpo, na rotina e no momento da pessoa.</h2>
         </div>
-        <div class="comparison">
+        <div class="comparison proof-contrast" aria-label="Comparação entre orientação genérica e acompanhamento contínuo">
           <div>
-            <h3>O ciclo que cansa</h3>
-            <p>Tentativa isolada, dieta da moda, resposta pronta na internet e a decisão pelo preço antes de entender o próprio corpo. Funciona por um tempo, depois recomeça.</p>
+            <h3>Quando falta acompanhamento</h3>
+            <p>A pessoa recebe uma orientação genérica, tenta adaptar sozinha e só percebe que travou quando o peso, a rotina ou a ansiedade já saíram do controle.</p>
           </div>
           <div>
-            <h3>O caminho Renove</h3>
-            <p>Histórico, rotina, exames, adesão e objetivos entram na avaliação para construir um acompanhamento que dá pra manter na vida real.</p>
+            <h3>Com leitura contínua</h3>
+            <p>Histórico, exames, rotina, adesão e objetivos entram na avaliação. Depois, a equipe ajusta o acompanhamento conforme a resposta do corpo.</p>
           </div>
         </div>
-        <ul class="compare-list" aria-label="Emagrecer sozinha x acompanhamento na Renove">
-          <li class="compare-head" aria-hidden="true">
-            <span class="compare-label-spacer"></span>
-            <span class="compare-col compare-col-alone">Sozinha</span>
-            <span class="compare-col compare-col-renove">Com a Renove</span>
-          </li>
-          <li class="compare-item">
-            <p class="compare-label">Ponto de partida</p>
-            <div class="compare-side compare-alone">
-              <span class="compare-tag">Sozinha</span>
-              <p>Dieta genérica achada na internet</p>
-            </div>
-            <div class="compare-side compare-renove">
-              <span class="compare-tag">Com a Renove</span>
-              <p>Avaliação médica com histórico, rotina e exames</p>
-            </div>
-          </li>
-          <li class="compare-item">
-            <p class="compare-label">Ajuste do plano</p>
-            <div class="compare-side compare-alone">
-              <span class="compare-tag">Sozinha</span>
-              <p>Você adivinha o que mudar</p>
-            </div>
-            <div class="compare-side compare-renove">
-              <span class="compare-tag">Com a Renove</span>
-              <p>Ajuste contínuo com a equipe, conforme sua evolução</p>
-            </div>
-          </li>
-          <li class="compare-item">
-            <p class="compare-label">Medição</p>
-            <div class="compare-side compare-alone">
-              <span class="compare-tag">Sozinha</span>
-              <p>Só a balança</p>
-            </div>
-            <div class="compare-side compare-renove">
-              <span class="compare-tag">Com a Renove</span>
-              <p>Bioimpedância semanal e dados objetivos</p>
-            </div>
-          </li>
-          <li class="compare-item">
-            <p class="compare-label">Cuidado</p>
-            <div class="compare-side compare-alone">
-              <span class="compare-tag">Sozinha</span>
-              <p>Foco só no peso</p>
-            </div>
-            <div class="compare-side compare-renove">
-              <span class="compare-tag">Com a Renove</span>
-              <p>Vitaminas, hormônios, sono e ansiedade no acompanhamento</p>
-            </div>
-          </li>
-          <li class="compare-item">
-            <p class="compare-label">Depois que emagrece</p>
-            <div class="compare-side compare-alone">
-              <span class="compare-tag">Sozinha</span>
-              <p>O peso costuma voltar</p>
-            </div>
-            <div class="compare-side compare-renove">
-              <span class="compare-tag">Com a Renove</span>
-              <p>Plano pensado para manter, não só para perder</p>
-            </div>
-          </li>
-        </ul>
+        <div class="method-ledger" aria-label="Pilares do acompanhamento Renove">
+          <article>
+            <span>01</span>
+            <strong>Avaliação antes da conduta</strong>
+            <p>Histórico, rotina, exames e objetivos entram na decisão antes de qualquer plano.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>Médica e nutricionista juntas</strong>
+            <p>O caso é visto de forma integrada, sem atendimento fragmentado.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>Medição objetiva</strong>
+            <p>A bioimpedância ajuda a acompanhar composição corporal, não só peso na balança.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <strong>Ajuste quando a vida muda</strong>
+            <p>O acompanhamento existe para corrigir a rota quando sono, ansiedade, rotina ou adesão atrapalham.</p>
+          </article>
+        </div>
       </section>
 
       <section class="plan-ladder-section" aria-labelledby="plans-title">
         <div class="section-heading align-center">
-          <p class="eyebrow">Dois caminhos de acompanhamento</p>
-          <h2 id="plans-title">Do primeiro passo ao acompanhamento semanal completo.</h2>
+          <p class="eyebrow">Como funciona o acompanhamento</p>
+          <h2 id="plans-title">O cuidado certo pra você a gente define junto, depois de te conhecer.</h2>
+          <p class="section-intro">Nada de escolher pacote no escuro. Você passa pela avaliação, a gente entende seu caso de verdade — e só então decide quanta presença, medição e retorno fazem sentido pra sua rotina.</p>
         </div>
-        <div class="plan-ladder">
+        <div class="plan-ladder compact-plans">
           <article class="plan-card">
-            <span class="plan-kicker">Protocolo inicial</span>
-            <strong class="plan-name">Para começar com segurança</strong>
-            <p class="plan-desc">Avaliação médica, orientação nutricional e acompanhamento inicial. O ponto de partida para quem quer sair da tentativa solta com estrutura de verdade.</p>
-            <ul class="plan-features">
-              <li>Avaliação médica presencial</li>
-              <li>Plano alimentar individualizado</li>
-              <li>Orientação sobre suplementação</li>
-              <li>Retorno de acompanhamento</li>
-            </ul>
-            <div class="plan-footer">
-              <strong class="plan-price">a partir de R$997</strong>
-              <a class="btn btn-secondary plan-cta" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20saber%20mais%20sobre%20o%20protocolo%20inicial%20de%20avaliacao%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=plan_inicial">Começar pela avaliação</a>
-            </div>
+            <span class="plan-kicker">01</span>
+            <strong class="plan-name">A gente entende seu caso primeiro</strong>
+            <p class="plan-desc">Seu histórico, sua rotina, seus exames e o que você quer alcançar — tudo entra na conversa antes de qualquer decisão.</p>
           </article>
           <article class="plan-card featured-plan">
-            <span class="plan-kicker">Acompanhamento semanal</span>
-            <strong class="plan-name">Cuidado próximo e contínuo</strong>
-            <p class="plan-desc">Acompanhamento semanal com a equipe, bioimpedância, ajuste contínuo de protocolo, follow-up de sintomas e suporte mais próximo. Para quem quer evolução com presença real.</p>
-            <ul class="plan-features">
-              <li>Tudo do protocolo inicial</li>
-              <li>Bioimpedância semanal</li>
-              <li>Ajuste contínuo de protocolo</li>
-              <li>Avaliação de vitaminas e hormônios</li>
-              <li>Suporte para sono e ansiedade</li>
-              <li>Acompanhamento nutricional integrado</li>
-            </ul>
-            <div class="plan-footer">
-              <strong class="plan-price">R$2.797</strong>
-              <a class="btn btn-primary plan-cta" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20saber%20mais%20sobre%20o%20acompanhamento%20semanal%20completo%20na%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=plan_semanal">Quero acompanhamento próximo</a>
-            </div>
+            <span class="plan-kicker">02</span>
+            <strong class="plan-name">O acompanhamento no seu ritmo</strong>
+            <p class="plan-desc">Quanto de presença e retorno você precisa, a gente ajusta ao seu momento — sem fórmula pronta, sem mais do que faz sentido.</p>
+          </article>
+          <article class="plan-card">
+            <span class="plan-kicker">03</span>
+            <strong class="plan-name">A rota se ajusta com você</strong>
+            <p class="plan-desc">Quando a vida aperta, o plano não trava: bioimpedância e revisão com a nutri ajudam a corrigir o caminho.</p>
           </article>
         </div>
-        <p class="micro-note">Os valores são o ponto de partida de cada acompanhamento; o formato, os recursos e a duração finais são definidos na avaliação, conforme o seu caso. Resultados variam conforme histórico e adesão.</p>
+        <div class="plan-action-row">
+          <p>Você não decide isso sozinha. Chama a gente no WhatsApp pra entender seu momento e marcar a avaliação — o resto a gente conversa na consulta, sem pressa.</p>
+          <a class="btn btn-primary plan-cta" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20a%20avaliacao%20de%20emagrecimento%20da%20Renove.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=plans_ladder">Quero entender a avaliação</a>
+        </div>
+        <p class="micro-note">Formato, recursos e duração são definidos na avaliação, conforme histórico, rotina, objetivo e responsabilidade clínica. Resultados variam conforme adesão.</p>
       </section>
 
       <section class="investment-section" aria-labelledby="investment-title">
         <div>
-          <p class="eyebrow">Filtro de decisão</p>
-          <h2 id="investment-title">Planos a partir de R$997.</h2>
-          <p>O acompanhamento Renove começa em R$997 e é montado conforme o seu caso. O valor final é apresentado na consulta, junto com o plano e a conduta indicados pela equipe.</p>
+          <p class="eyebrow">Decisão sem pressa</p>
+          <h2 id="investment-title">Sobre quanto custa: a gente te explica tudo na avaliação, olhando no olho.</h2>
+          <p>Nada de pacote escolhido no escuro. Na avaliação a gente entende seu caso de verdade e te mostra a faixa de investimento com clareza — você decide com calma, no seu tempo, sem ninguém te pressionando.</p>
         </div>
-        <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20qual%20avaliacao%20de%20emagrecimento%20faz%20sentido%20pra%20mim.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=investment">Conversar sobre avaliação</a>
+        <a class="btn btn-primary" href="https://wa.me/5514981540709?text=Ola%2C%20quero%20entender%20qual%20avaliacao%20de%20emagrecimento%20faz%20sentido%20pra%20mim.&utm_source=site&utm_medium=cta&utm_campaign=emagrecimento_bauru&utm_content=investment">Quero entender meu caso</a>
       </section>
 
       <section class="faq-section" aria-labelledby="faq-title">
-        <div class="section-heading">
-          <p class="eyebrow">Perguntas frequentes</p>
-          <h2 id="faq-title">Respostas diretas para decidir com segurança.</h2>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>Como funciona o acompanhamento médico para emagrecimento?</summary>
-            <p>O processo começa com avaliação presencial, histórico, rotina e objetivos. Depois a equipe define um plano individual e acompanha os ajustes ao longo do processo.</p>
-          </details>
-          <details>
-            <summary>Quanto custa?</summary>
-            <p>Os planos começam em R$997, com o acompanhamento semanal completo em R$2.797. O valor final é definido na avaliação, conforme o formato indicado para o seu caso, e a equipe apresenta o plano completo na consulta.</p>
-          </details>
-          <details>
-            <summary>A consulta é obrigatória?</summary>
-            <p>Sim. A Renove trabalha com avaliação profissional antes de qualquer conduta.</p>
-          </details>
-          <details>
-            <summary>Onde fica a Renove?</summary>
-            <p>Av. Affonso José Aiello, 10-95 - Vila Aviação, Bauru - SP, a menos de 2 km do centro. Atendimento presencial, com estacionamento na região.</p>
-          </details>
-          <details>
-            <summary>A Renove comercializa tratamentos pelo WhatsApp?</summary>
-            <p>Não. O WhatsApp orienta o agendamento e tira dúvidas iniciais. Qualquer conduta depende de avaliação profissional.</p>
-          </details>
-          <details>
-            <summary>Em quanto tempo vejo evolução?</summary>
-            <p>Resultados variam conforme histórico, rotina, adesão e avaliação individual. A proposta é construir um caminho seguro e acompanhado — sem prazo artificial que ignora a sua realidade.</p>
-          </details>
-          <details>
-            <summary>Como funciona a taxa de reserva?</summary>
-            <p>Ao agendar pelo WhatsApp, há uma taxa de reserva simbólica que confirma o seu horário. Esse valor é abatido integralmente na consulta com a Dra. Juliana.</p>
-          </details>
-          <details>
-            <summary>O que diferencia a Renove de outros profissionais de emagrecimento em Bauru?</summary>
-            <p>A Renove cuida do paciente de forma integrada: vitaminas, minerais, hormônios, sono e ansiedade entram no acompanhamento, não só o peso. O diferencial é o acolhimento e cuidado integral desde a primeira consulta.</p>
-          </details>
-          <details>
-            <summary>Preciso ter tentado outros métodos antes?</summary>
-            <p>Não. A Renove atende tanto quem está começando quanto quem já tentou de tudo e não conseguiu manter. Em ambos os casos, o ponto de partida é o mesmo: avaliação individual para entender o seu histórico.</p>
-          </details>
-          <details>
-            <summary>É possível fazer o acompanhamento mesmo trabalhando em horário comercial?</summary>
-            <p>Sim. Os horários são definidos na consulta e a equipe organiza os retornos conforme a sua disponibilidade. Consulte as vagas abertas pelo WhatsApp.</p>
-          </details>
-          <details>
-            <summary>O plano inclui medicamentos?</summary>
-            <p>A conduta medicamentosa, quando indicada pela Dra. Juliana, é apresentada na avaliação. Não há prescrição automática: cada caso é avaliado individualmente com base em exames e histórico clínico.</p>
-          </details>
+        <div class="faq-layout">
+          <div class="faq-editorial">
+            <div class="section-heading">
+              <p class="eyebrow">Perguntas frequentes</p>
+              <h2 id="faq-title">Respostas diretas para decidir com segurança.</h2>
+            </div>
+            <p class="faq-lead">Nesta etapa, a decisão costuma travar em quatro pontos: consulta obrigatória, investimento, tempo de evolução e medo de entrar em mais uma tentativa sem sustentação.</p>
+            <dl class="summary-list-lite" aria-label="Resumo rápido da decisão">
+              <div>
+                <dt>Presencial</dt>
+                <dd>Avaliação e retornos em Bauru</dd>
+              </div>
+              <div>
+                <dt>Investimento</dt>
+                <dd>Explicado na avaliação, com transparência; formato definido conforme o seu caso</dd>
+              </div>
+              <div>
+                <dt>Presença</dt>
+                <dd>Retornos e recursos definidos conforme o seu caso</dd>
+              </div>
+              <div>
+                <dt>Conduta</dt>
+                <dd>Sem fechamento clínico pelo WhatsApp</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>Como funciona o acompanhamento médico para emagrecimento?</summary>
+              <p>O processo começa com avaliação presencial, histórico, rotina e objetivos. Depois a equipe define um plano individual e acompanha os ajustes ao longo do processo.</p>
+            </details>
+            <details>
+              <summary>Quanto custa?</summary>
+              <p>O investimento é explicado na avaliação, conforme o caso de cada paciente. A Renove mostra a faixa de investimento com transparência, pessoalmente, mas não fecha conduta no escuro nem transforma a conversa inicial em venda apressada.</p>
+            </details>
+            <details>
+              <summary>A consulta é obrigatória?</summary>
+              <p>Sim. A Renove trabalha com avaliação profissional antes de qualquer conduta.</p>
+            </details>
+            <details>
+              <summary>Onde fica a Renove?</summary>
+              <p>Av. Affonso José Aiello, 10-95 - Vila Aviação, Bauru - SP, a menos de 2 km do centro. Atendimento presencial, com estacionamento na região.</p>
+            </details>
+            <details>
+              <summary>A Renove comercializa tratamentos pelo WhatsApp?</summary>
+              <p>Não. O WhatsApp orienta o agendamento e tira dúvidas iniciais. Qualquer conduta depende de avaliação profissional.</p>
+            </details>
+            <details>
+              <summary>Em quanto tempo vejo evolução?</summary>
+              <p>Resultados variam conforme histórico, rotina, adesão e avaliação individual. A proposta é construir um caminho seguro e acompanhado — sem prazo artificial que ignora a sua realidade.</p>
+            </details>
+            <details>
+              <summary>Como funciona a taxa de reserva?</summary>
+              <p>Ao agendar pelo WhatsApp, há uma taxa de reserva simbólica que confirma o seu horário. Esse valor é abatido integralmente na consulta com a Dra. Juliana.</p>
+            </details>
+            <details>
+              <summary>O que diferencia a Renove de outros profissionais de emagrecimento em Bauru?</summary>
+              <p>A Renove cuida do paciente de forma integrada: vitaminas, minerais, hormônios, sono e ansiedade entram no acompanhamento, não só o peso. O diferencial é o acolhimento e cuidado integral desde a primeira consulta.</p>
+            </details>
+            <details>
+              <summary>Preciso ter tentado outros métodos antes?</summary>
+              <p>Não. A Renove atende tanto quem está começando quanto quem já tentou de tudo e não conseguiu manter. Em ambos os casos, a primeira etapa é a avaliação individual para entender o seu histórico.</p>
+            </details>
+            <details>
+              <summary>É possível fazer o acompanhamento mesmo trabalhando em horário comercial?</summary>
+              <p>Sim. Os horários são definidos na consulta e a equipe organiza os retornos conforme a sua disponibilidade. Consulte as vagas abertas pelo WhatsApp.</p>
+            </details>
+            <details>
+              <summary>O plano inclui medicamentos?</summary>
+              <p>A conduta medicamentosa, quando indicada pela Dra. Juliana, é apresentada na avaliação. Não há prescrição automática: cada caso é avaliado individualmente com base em exames e histórico clínico.</p>
+            </details>
+          </div>
         </div>
       </section>
 
 
-      <section class="testimonials-section" aria-labelledby="testimonials-title">
+      <section class="testimonials-section" aria-labelledby="testimonials-title" hidden>
         <div class="section-heading">
-          <p class="eyebrow">Quem já passou por aqui</p>
-          <h2 id="testimonials-title">O que nossos pacientes dizem.</h2>
+          <p class="eyebrow">Depoimentos reais</p>
+          <h2 id="testimonials-title">Experiências de pacientes, somente com consentimento.</h2>
         </div>
-        <div class="testimonials-carousel" data-testimonials data-autoplay="6000">
-          <button type="button" class="tc-arrow tc-prev" aria-label="Depoimento anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="tc-viewport">
-            <ul class="tc-track" role="list">
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Carlos">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Profissionais atenciosos e explicações claras. Me senti seguro durante todo o tratamento.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">C</span>Carlos</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Fernanda">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Não é só sobre emagrecer, é sobre aprender a cuidar da saúde e manter constância.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">F</span>Fernanda</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Ricardo">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Resultados reais, sem promessas milagrosas e com acompanhamento contínuo.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">R</span>Ricardo</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Mariana">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Me senti acolhida desde a primeira consulta. O acompanhamento fez toda a diferença no meu processo.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">M</span>Mariana</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Juliana">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Desde a primeira consulta senti profissionalismo e cuidado. Tudo é explicado com clareza e responsabilidade.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">J</span>Juliana</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="André">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>O acompanhamento faz toda a diferença. Me senti seguro em cada etapa do tratamento.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">A</span>André</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Patrícia">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Não é só estética, é saúde de verdade. Aprendi a cuidar melhor de mim ao longo do processo.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">P</span>Patrícia</figcaption>
-              </li>
-              <li class="testimonial-card" role="group" aria-roledescription="Depoimento" aria-label="Felipe">
-                <span class="tc-quote-mark" aria-hidden="true">&ldquo;</span>
-                <blockquote>Resultados consistentes, sem promessas irreais. Um atendimento humano e muito bem estruturado.</blockquote>
-                <figcaption><span class="tc-avatar" aria-hidden="true">F</span>Felipe</figcaption>
-              </li>
-            </ul>
-          </div>
-          <button type="button" class="tc-arrow tc-next" aria-label="Próximo depoimento">
-            <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="tc-dots" role="tablist" aria-label="Selecionar depoimento"></div>
+        <div class="testi-grid">
+          <article class="testi-card is-skeleton">
+            <span class="testi-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              <p data-fill="texto">Texto do depoimento real, com autorização da paciente.</p>
+              <footer>
+                <cite data-fill="autor">Iniciais, contexto do acompanhamento</cite>
+                <small>* Resultados individuais variam conforme histórico, rotina e adesão ao plano.</small>
+              </footer>
+            </blockquote>
+          </article>
+          <article class="testi-card is-skeleton">
+            <span class="testi-quote-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              <p data-fill="texto">Texto do depoimento real, com autorização da paciente.</p>
+              <footer>
+                <cite data-fill="autor">Iniciais, contexto do acompanhamento</cite>
+                <small>* Resultados individuais variam conforme histórico, rotina e adesão ao plano.</small>
+              </footer>
+            </blockquote>
+          </article>
         </div>
-        <p class="micro-note">Depoimentos de pacientes. Resultados variam conforme histórico, rotina e adesão.</p>
+        <p class="micro-note">Este bloco só deve ficar visível quando houver depoimentos reais, revisados e autorizados.</p>
       </section>
 
       <section class="local-section" aria-labelledby="local-title">
@@ -610,11 +627,12 @@
         </div>
         <div class="footer-col">
           <h2>Navegação</h2>
-          <a href="../emagrecimento-bauru/">Emagrecimento</a>
-          <a href="../harmonizacao-facial-bauru/">Harmonização facial</a>
-          <a href="../blog/">Blog</a>
-          <a href="../sobre/">Sobre a Renove</a>
-          <a href="../contato/">Contato</a>
+          <a href="/emagrecimento-bauru/">Emagrecimento</a>
+          <a href="/harmonizacao-facial-bauru/">Harmonização facial</a>
+          <a href="/blog/">Blog</a>
+          <a href="/ferramentas/">Calculadoras</a>
+          <a href="/sobre/">Sobre a Renove</a>
+          <a href="/contato/">Contato</a>
         </div>
         <div class="footer-col">
           <h2>Contato</h2>
@@ -626,7 +644,7 @@
       <div class="footer-legal">
         <span>Dra. Juliana Reis - CRM-SP 182.823 | RQE 133.088</span>
         <span>CNPJ 59.402.454/0001-31</span>
-        <a href="../politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
         <span>Resultados variam conforme histórico, adesão e avaliação individual.</span>
       </div>
     </footer>

@@ -22,7 +22,6 @@ const routes = [
   ["/blog/dieta-ou-acompanhamento-medico/index.html", "blog-dieta"],
   ["/blog/emagrecimento-saudavel-bauru/index.html", "blog-emag"],
   ["/politica-de-privacidade/index.html", "privacidade"],
-  ["/brief/index.html", "brief"],
 ];
 const widths = [390, 1440, 2560];
 

@@ -14,6 +14,7 @@ const routes = [
   "/",
   "/emagrecimento-bauru/",
   "/harmonizacao-facial-bauru/",
+  "/ferramentas/",
   "/sobre/",
   "/contato/",
   "/politica-de-privacidade/",

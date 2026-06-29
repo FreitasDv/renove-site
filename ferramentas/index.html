@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadoras de saúde: IMC e gasto calórico | Renove Bauru</title>
+    <meta name="description" content="Calculadoras gratuitas da Renove Clinic em Bauru: IMC, gasto calórico diário e tempo até a meta. Ferramentas educativas — o plano real nasce na avaliação.">
+    <link rel="canonical" href="https://renoveclinic.com.br/ferramentas/">
+
+    <meta name="theme-color" content="#102a3d">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/logo-renove.png" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/logo-renove.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Renove Clinic">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Calculadoras de saúde — Renove Clinic Bauru">
+    <meta property="og:description" content="Calcule IMC, gasto calórico diário e estimativa de meta de peso. Ferramentas educativas da Renove Clinic, em Bauru/SP.">
+    <meta property="og:url" content="https://renoveclinic.com.br/ferramentas/">
+    <meta property="og:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
+    <meta property="og:image:alt" content="Renove Clinic em Bauru/SP">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calculadoras de saúde — Renove Clinic">
+    <meta name="twitter:description" content="IMC, gasto calórico e meta de peso. Ferramentas educativas da Renove Clinic, Bauru/SP.">
+    <meta name="twitter:image" content="https://renoveclinic.com.br/assets/equipe-renove.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,600&family=Ubuntu:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="../script.js" defer></script>
+    <script src="./tools.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalWebPage",
+        "@id": "https://renoveclinic.com.br/ferramentas/#webpage",
+        "name": "Calculadoras de saúde — Renove Clinic",
+        "url": "https://renoveclinic.com.br/ferramentas/",
+        "description": "Calculadoras educativas de IMC, gasto calórico diário (TDEE) e estimativa de meta de peso, oferecidas pela Renove Clinic em Bauru/SP.",
+        "inLanguage": "pt-BR",
+        "lastReviewed": "2026-06-27",
+        "reviewedBy": {
+          "@type": "Physician",
+          "name": "Dra. Juliana Reis",
+          "identifier": [
+            { "@type": "PropertyValue", "name": "CRM-SP", "value": "182823" },
+            { "@type": "PropertyValue", "name": "RQE", "value": "133088" }
+          ]
+        },
+        "about": { "@type": "MedicalCondition", "name": "Sobrepeso e obesidade" },
+        "publisher": { "@id": "https://renoveclinic.com.br/#clinic" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "@id": "https://renoveclinic.com.br/#clinic",
+        "name": "Renove Clinic",
+        "url": "https://renoveclinic.com.br/",
+        "telephone": "+5514981540709",
+        "medicalSpecialty": "Dietetics",
+        "openingHours": "Mo-Sa 09:00-18:00",
+        "image": "https://renoveclinic.com.br/assets/logo-renove.png",
+        "sameAs": ["https://www.google.com/search?kgmid=/g/11ybrxv1wg"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Affonso José Aiello, 10-95 - Vila Aviação",
+          "addressLocality": "Bauru",
+          "addressRegion": "SP",
+          "postalCode": "17018-520",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://renoveclinic.com.br/" },
+          { "@type": "ListItem", "position": 2, "name": "Calculadoras de saúde", "item": "https://renoveclinic.com.br/ferramentas/" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "A calculadora de IMC serve como diagnóstico?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Não. O IMC é uma referência populacional que não distingue massa magra de gordura, nem leva em conta histórico ou composição corporal. Serve para começar a conversa, não para diagnosticar. A leitura clínica acontece na avaliação presencial, com bioimpedância." }
+          },
+          {
+            "@type": "Question",
+            "name": "Como é calculado o gasto calórico diário?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Usamos a equação Mifflin-St Jeor para estimar o metabolismo basal e multiplicamos por um fator de atividade. É uma estimativa educativa: o gasto real varia conforme composição corporal, metabolismo e rotina, e é refinado na avaliação." }
+          },
+          {
+            "@type": "Question",
+            "name": "A estimativa de tempo para a meta é garantida?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Não. A estimativa assume um déficit calórico moderado e constante, o que raramente acontece na vida real. Resultados variam conforme histórico, adesão e avaliação individual. O propósito é dar ordem de grandeza, não prometer prazo." }
+          }
+        ]
+      }
+    </script>
+      <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJ77VNSV');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body class="page-tools">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJ77VNSV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Renove Clinic - inicio">
+        <img src="../assets/logo-renove.png" width="116" height="124" alt="" loading="eager" decoding="async" aria-hidden="true">
+        <span class="brand-lockup">
+          <span class="brand-name">Renove</span>
+          <span class="brand-tag">Clinic · Bauru</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegacao principal">
+        <a href="/emagrecimento-bauru/">Emagrecimento</a>
+        <a href="/harmonizacao-facial-bauru/">Harmonização</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sobre/">Sobre</a>
+        <a href="/contato/">Contato</a>
+      </nav>
+      <a class="header-cta" data-cta="header" href="https://wa.me/5514981540709?text=Ola%2C%20usei%20as%20calculadoras%20do%20site%20e%20quero%20entender%20a%20avaliacao.&utm_source=site&utm_medium=cta&utm_campaign=ferramentas&utm_content=header">
+        <svg class="wa-glyph" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2c-5.46 0-9.9 4.43-9.9 9.9 0 1.74.46 3.45 1.32 4.95L2 22l5.3-1.39a9.86 9.86 0 0 0 4.73 1.2h.01c5.46 0 9.9-4.43 9.9-9.9 0-2.64-1.03-5.13-2.9-7A9.82 9.82 0 0 0 12.04 2Zm5.8 14.07c-.25.69-1.45 1.32-2 1.4-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.62-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.78-.37.2 0 .39 0 .56.01.18.01.42-.07.66.5.25.59.84 2.04.91 2.19.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.7.8 2 .95.3.15.5.22.57.35.07.12.07.71-.18 1.4Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <button class="menu-button" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu de navegacao">
+        <span class="menu-bars" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main id="conteudo">
+      <section class="tools-hero" aria-labelledby="tools-hero-title">
+        <span class="leaf-orn leaf-orn-a" aria-hidden="true"></span>
+        <span class="leaf-orn leaf-orn-b" aria-hidden="true"></span>
+        <div class="tools-hero-inner">
+          <p class="eyebrow">Ferramentas Renove · uso educativo</p>
+          <h1 id="tools-hero-title"><span class="nowrap">Entenda seus números</span> <span class="editorial">antes da avaliação.</span></h1>
+          <p class="tools-hero-lead">Cinco ferramentas rápidas para você chegar à conversa com mais clareza — de um retrato dos seus números a um roteiro pronto pra consulta. São estimativas educativas: o plano real nasce da avaliação presencial, com médica e nutricionista lendo o seu caso por inteiro.</p>
+          <div class="tools-hero-meta" role="list">
+            <span role="listitem"><strong>5</strong> ferramentas gratuitas</span>
+            <span role="listitem"><strong>~2 min</strong> cada</span>
+            <span role="listitem">Revisado pela <strong>Dra. Juliana Reis</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TRILHA / ÍNDICE GUIADO ===================== -->
+      <section class="tools-route" aria-labelledby="tools-route-title">
+        <div class="tools-route-head">
+          <h2 id="tools-route-title">Uma trilha, do número à consulta</h2>
+          <p>Cada ferramenta puxa a próxima. Comece onde fizer sentido — ou siga a ordem e chegue à avaliação com tudo organizado.</p>
+        </div>
+        <ol class="tools-route-map">
+          <li class="route-step" data-kind="medir">
+            <a href="#calc-imc">
+              <span class="route-num">01</span>
+              <span class="route-body">
+                <span class="route-name">IMC</span>
+                <span class="route-desc">Onde você está hoje, na relação peso e altura.</span>
+              </span>
+              <span class="route-tag">Medir</span>
+            </a>
+          </li>
+          <li class="route-step" data-kind="medir">
+            <a href="#calc-tdee">
+              <span class="route-num">02</span>
+              <span class="route-body">
+                <span class="route-name">Gasto calórico</span>
+                <span class="route-desc">Quanta energia seu corpo gasta por dia (Mifflin-St Jeor).</span>
+              </span>
+              <span class="route-tag">Medir</span>
+            </a>
+          </li>
+          <li class="route-step" data-kind="planejar">
+            <a href="#calc-meta">
+              <span class="route-num">03</span>
+              <span class="route-body">
+                <span class="route-name">Meta de peso</span>
+                <span class="route-desc">Uma ordem de grandeza de tempo para a sua meta.</span>
+              </span>
+              <span class="route-tag">Planejar</span>
+            </a>
+          </li>
+          <li class="route-step" data-kind="planejar">
+            <a href="#calc-perfil">
+              <span class="route-num">04</span>
+              <span class="route-body">
+                <span class="route-name">Quiz de prontidão</span>
+                <span class="route-desc">Um retrato do seu momento e do próximo passo certo.</span>
+              </span>
+              <span class="route-tag">Planejar</span>
+            </a>
+          </li>
+          <li class="route-step" data-kind="agir">
+            <a href="#calc-checklist">
+              <span class="route-num">05</span>
+              <span class="route-body">
+                <span class="route-name">Checklist da consulta</span>
+                <span class="route-desc">Um roteiro pronto pra levar direto pro WhatsApp.</span>
+              </span>
+              <span class="route-tag">Agir</span>
+            </a>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ========================= IMC ========================= -->
+      <section class="tool-section" id="calc-imc" aria-labelledby="imc-title" data-kind="medir">
+        <div class="tool-card">
+          <div class="tool-intro">
+            <p class="eyebrow tool-step"><span class="tool-step-num">01</span> Medir · IMC</p>
+            <h2 id="imc-title">Índice de Massa Corporal (IMC)</h2>
+            <p>Uma primeira referência sobre a relação entre peso e altura. Não distingue músculo de gordura, então é só o ponto de partida da conversa.</p>
+          </div>
+          <form class="tool-form" id="imc-form" novalidate>
+            <div class="tool-field">
+              <label for="imc-peso">Peso (kg)</label>
+              <input type="number" id="imc-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off">
+            </div>
+            <div class="tool-field">
+              <label for="imc-altura">Altura (cm)</label>
+              <input type="number" id="imc-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary tool-submit">Calcular IMC</button>
+          </form>
+          <div class="tool-preview" aria-hidden="true">
+            <span class="tool-preview-glyph">⌖</span>
+            <p>Preencha peso e altura para ver seu IMC, a faixa de peso de referência para a sua altura e o que isso significa no seu caso.</p>
+          </div>
+          <output class="tool-result" id="imc-result" hidden aria-live="polite">
+            <div class="tool-result-head">
+              <span class="tool-result-value" id="imc-value">—</span>
+              <span class="tool-result-tag" id="imc-tag">—</span>
+            </div>
+            <p class="tool-result-text" id="imc-text"></p>
+            <div class="tool-scale" aria-hidden="true">
+              <span class="tool-scale-fill" id="imc-scale"></span>
+            </div>
+            <ul class="tool-scale-legend" aria-hidden="true">
+              <li>Baixo</li>
+              <li>Adequado</li>
+              <li>Sobrepeso</li>
+              <li>Obesidade</li>
+            </ul>
+            <a class="btn btn-secondary tool-cta" id="imc-cta" data-cta="tool_imc" href="#" target="_blank" rel="noopener">Conversar sobre o meu caso</a>
+          </output>
+        </div>
+      </section>
+
+      <!-- ========================= TDEE ========================= -->
+      <section class="tool-section tool-section-warm" id="calc-tdee" aria-labelledby="tdee-title" data-kind="medir">
+        <div class="tool-card">
+          <div class="tool-intro">
+            <p class="eyebrow tool-step"><span class="tool-step-num">02</span> Medir · Energia</p>
+            <h2 id="tdee-title">Gasto calórico diário estimado</h2>
+            <p>Quantas calorias seu corpo gasta por dia, somando metabolismo basal e rotina. Calculado pela equação Mifflin-St Jeor, referência usada por nutricionistas.</p>
+          </div>
+          <form class="tool-form tool-form-grid" id="tdee-form" novalidate>
+            <div class="tool-field">
+              <label for="tdee-sexo">Sexo biológico</label>
+              <select id="tdee-sexo" name="sexo">
+                <option value="f">Feminino</option>
+                <option value="m">Masculino</option>
+              </select>
+            </div>
+            <div class="tool-field">
+              <label for="tdee-idade">Idade</label>
+              <input type="number" id="tdee-idade" name="idade" inputmode="numeric" min="14" max="100" step="1" placeholder="Ex.: 38" autocomplete="off">
+            </div>
+            <div class="tool-field">
+              <label for="tdee-peso">Peso (kg)</label>
+              <input type="number" id="tdee-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off">
+            </div>
+            <div class="tool-field">
+              <label for="tdee-altura">Altura (cm)</label>
+              <input type="number" id="tdee-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off">
+            </div>
+            <div class="tool-field tool-field-wide">
+              <label for="tdee-atividade">Nível de atividade</label>
+              <select id="tdee-atividade" name="atividade">
+                <option value="1.2">Sedentário — pouco ou nenhum exercício</option>
+                <option value="1.375">Leve — exercício 1 a 3 dias/semana</option>
+                <option value="1.55" selected>Moderado — exercício 3 a 5 dias/semana</option>
+                <option value="1.725">Intenso — exercício 6 a 7 dias/semana</option>
+                <option value="1.9">Muito intenso — treino pesado ou trabalho físico</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Calcular gasto diário</button>
+          </form>
+          <div class="tool-preview" aria-hidden="true">
+            <span class="tool-preview-glyph">⌖</span>
+            <p>Preencha os campos para ver seu gasto diário, metabolismo basal, ponto de partida de déficit e uma sugestão de proteína.</p>
+          </div>
+          <output class="tool-result" id="tdee-result" hidden aria-live="polite">
+            <div class="tool-result-head">
+              <span class="tool-result-value" id="tdee-value">—</span>
+              <span class="tool-result-unit">kcal/dia</span>
+            </div>
+            <p class="tool-result-text" id="tdee-text"></p>
+            <dl class="tool-breakdown">
+              <div><dt>Metabolismo basal</dt><dd id="tdee-bmr">—</dd></div>
+              <div><dt>Para manter o peso</dt><dd id="tdee-maintain">—</dd></div>
+              <div class="tool-breakdown-key"><dt>Déficit moderado</dt><dd id="tdee-deficit">—</dd></div>
+              <div><dt>Proteína sugerida</dt><dd id="tdee-protein">—</dd></div>
+            </dl>
+            <a class="btn btn-secondary tool-cta" id="tdee-cta" data-cta="tool_tdee" href="#" target="_blank" rel="noopener">Montar meu plano com a equipe</a>
+          </output>
+        </div>
+      </section>
+
+      <!-- ========================= META ========================= -->
+      <section class="tool-section" id="calc-meta" aria-labelledby="meta-title" data-kind="planejar">
+        <div class="tool-card">
+          <div class="tool-intro">
+            <p class="eyebrow tool-step"><span class="tool-step-num">03</span> Planejar · Meta</p>
+            <h2 id="meta-title">Estimativa de tempo para a meta</h2>
+            <p>Uma ideia de quanto tempo um emagrecimento seguro pode levar, com perda gradual de peso. É ordem de grandeza, não promessa de prazo.</p>
+          </div>
+          <form class="tool-form tool-form-grid" id="meta-form" novalidate>
+            <div class="tool-field">
+              <label for="meta-atual">Peso atual (kg)</label>
+              <input type="number" id="meta-atual" name="atual" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 88" autocomplete="off">
+            </div>
+            <div class="tool-field">
+              <label for="meta-desejado">Peso desejado (kg)</label>
+              <input type="number" id="meta-desejado" name="desejado" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 72" autocomplete="off">
+            </div>
+            <div class="tool-field tool-field-wide">
+              <label for="meta-ritmo">Ritmo de perda</label>
+              <select id="meta-ritmo" name="ritmo">
+                <option value="0.5" selected>Gradual e sustentável — ~0,5 kg/semana</option>
+                <option value="0.75">Moderado — ~0,75 kg/semana</option>
+                <option value="1">Acelerado — ~1 kg/semana (requer acompanhamento)</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Estimar tempo</button>
+          </form>
+          <div class="tool-preview" aria-hidden="true">
+            <span class="tool-preview-glyph">⌖</span>
+            <p>Informe o peso atual, o desejado e o ritmo para ver uma estimativa de tempo e o primeiro marco da jornada.</p>
+          </div>
+          <output class="tool-result" id="meta-result" hidden aria-live="polite">
+            <div class="tool-result-head">
+              <span class="tool-result-value" id="meta-value">—</span>
+            </div>
+            <p class="tool-result-text" id="meta-text"></p>
+            <div class="tool-journey" id="meta-journey" hidden aria-hidden="true">
+              <span class="tool-journey-point">
+                <span class="tool-journey-num" id="meta-j-atual">—</span>
+                <span class="tool-journey-cap">hoje</span>
+              </span>
+              <span class="tool-journey-track">
+                <span class="tool-journey-delta" id="meta-j-delta">—</span>
+              </span>
+              <span class="tool-journey-point tool-journey-point-goal">
+                <span class="tool-journey-num" id="meta-j-meta">—</span>
+                <span class="tool-journey-cap">meta</span>
+              </span>
+            </div>
+            <a class="btn btn-secondary tool-cta" id="meta-cta" data-cta="tool_meta" href="#" target="_blank" rel="noopener">Quero um plano pra essa meta</a>
+          </output>
+        </div>
+      </section>
+
+      <!-- ========================= QUIZ DE PRONTIDÃO ========================= -->
+      <section class="tool-section tool-section-warm" id="calc-perfil" aria-labelledby="quiz-title" data-kind="planejar">
+        <div class="tool-card">
+          <div class="tool-intro">
+            <p class="eyebrow tool-step"><span class="tool-step-num">04</span> Planejar · Momento</p>
+            <h2 id="quiz-title">Qual é o seu momento agora?</h2>
+            <p>Seis perguntas rápidas para entender em que ponto você está e o que faz mais sentido como próximo passo. Não é diagnóstico — é um retrato do seu momento para a conversa começar no lugar certo.</p>
+          </div>
+          <form class="tool-form tool-quiz-form" id="quiz-form" novalidate>
+            <fieldset class="tool-quiz-q">
+              <legend>1. Como você se sente em relação ao seu peso ou saúde hoje?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q1" value="2"> Tudo bem, só quero ajustes finos</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q1" value="1"> Incomoda às vezes, penso nisso de vez em quando</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q1" value="0"> Incomoda bastante e atrapalha meu dia a dia</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>2. Você já tentou emagrecer ou cuidar disso por conta própria?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q2" value="2"> Nunca tentei de forma séria</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q2" value="1"> Já tentei uma ou duas vezes</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q2" value="0"> Já tentei várias vezes e o peso voltou</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>3. Como está sua rotina de sono e energia?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q3" value="2"> Durmo bem e tenho energia na maior parte dos dias</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q3" value="1"> Varia bastante de semana pra semana</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q3" value="0"> Durmo mal e vivo cansada(o)</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>4. Você tem alguma condição de saúde acompanhada por médico?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q4" value="2"> Não, que eu saiba</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q4" value="1"> Tenho dúvidas, nunca investiguei a fundo</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q4" value="0"> Sim (tireoide, pressão, glicemia ou outra)</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>5. Quão pronta(o) você se sente para começar agora?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q5" value="2"> Muito pronta(o), quero começar logo</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q5" value="1"> Pronta(o), mas com algumas dúvidas</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q5" value="0"> Ainda inseguro(a), só pesquisando por enquanto</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>6. O que você mais procura num acompanhamento?</legend>
+              <label class="tool-quiz-opt"><input type="radio" name="q6" value="2"> Método claro e resultado sustentável</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q6" value="1"> Alguém que entenda meu histórico de verdade</label>
+              <label class="tool-quiz-opt"><input type="radio" name="q6" value="0"> Não recomeçar do zero de novo</label>
+            </fieldset>
+            <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Ver meu perfil</button>
+          </form>
+          <output class="tool-result" id="quiz-result" hidden aria-live="polite">
+            <div class="tool-result-head">
+              <span class="tool-result-tag" id="quiz-tag">—</span>
+            </div>
+            <div class="tool-scale tool-scale-quiz" id="quiz-scale" aria-hidden="true">
+              <span class="tool-scale-fill"></span>
+            </div>
+            <ul class="tool-scale-legend tool-scale-legend-quiz" aria-hidden="true">
+              <li>Cuidar com apoio</li>
+              <li>Pronta(o) com dúvidas</li>
+              <li>Pronta(o) p/ plano</li>
+            </ul>
+            <p class="tool-result-text" id="quiz-text"></p>
+            <a class="btn btn-secondary tool-cta" id="quiz-cta" data-cta="tool_quiz" href="#" target="_blank" rel="noopener">Conversar sobre o meu momento</a>
+          </output>
+        </div>
+      </section>
+
+      <!-- ===================== CHECKLIST DE PRONTIDÃO ===================== -->
+      <section class="tool-section" id="calc-checklist" aria-labelledby="check-title" data-kind="agir">
+        <div class="tool-card">
+          <div class="tool-intro">
+            <p class="eyebrow tool-step"><span class="tool-step-num">05</span> Agir · Consulta</p>
+            <h2 id="check-title">Chegue na consulta com tudo na mão</h2>
+            <p>Marque o que faz sentido para você. No final, a ferramenta monta um resuminho que você leva direto pro WhatsApp da Renove — assim a equipe já sabe o que preparar e a sua avaliação rende mais. Nada aqui é diagnóstico.</p>
+          </div>
+          <form class="tool-form tool-quiz-form" id="check-form" novalidate>
+            <fieldset class="tool-quiz-q">
+              <legend>O que eu posso levar</legend>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="exames recentes (se eu tiver em mãos)"> Exames recentes, se eu tiver em mãos</label>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="a lista dos remédios e suplementos que uso"> A lista dos remédios e suplementos que uso</label>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="meu histórico de saúde e o da minha família"> Meu histórico de saúde e o da família</label>
+            </fieldset>
+            <fieldset class="tool-quiz-q">
+              <legend>O que eu quero comentar</legend>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="como andam meu sono e minha energia"> Como andam meu sono e minha energia</label>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="o que já tentei antes pra cuidar disso"> O que já tentei antes pra cuidar disso</label>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="minha rotina real de alimentação e trabalho"> Minha rotina real de alimentação e trabalho</label>
+              <label class="tool-quiz-opt"><input type="checkbox" name="check" value="qual é o meu objetivo principal agora"> Qual é o meu objetivo principal agora</label>
+            </fieldset>
+            <div class="tool-field tool-field-wide">
+              <label for="check-duvida">Tem uma dúvida principal? (opcional)</label>
+              <input type="text" id="check-duvida" name="duvida" maxlength="140" placeholder="Ex.: dá pra conciliar com a minha rotina?" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Montar meu checklist</button>
+          </form>
+          <output class="tool-result" id="check-result" hidden aria-live="polite">
+            <div class="tool-result-head">
+              <span class="tool-result-tag" id="check-tag">Seu checklist está pronto</span>
+            </div>
+            <p class="tool-result-text" id="check-text"></p>
+            <ul class="tool-check-summary" id="check-list"></ul>
+            <a class="btn btn-secondary tool-cta" id="check-cta" data-cta="tool_checklist" href="#" target="_blank" rel="noopener">Levar meu checklist pro WhatsApp</a>
+          </output>
+        </div>
+      </section>
+
+      <section class="tool-disclaimer" aria-labelledby="tool-disclaimer-title">
+        <div class="tool-disclaimer-head">
+          <h2 id="tool-disclaimer-title">Por que isto é só um ponto de partida</h2>
+          <p>IMC, gasto calórico e tempo de meta são estimativas estatísticas. Servem para começar a conversa — não para diagnosticar, prescrever ou prometer prazo.</p>
+        </div>
+        <ul class="tool-disclaimer-grid">
+          <li>
+            <h3>O que os números não veem</h3>
+            <p>Composição corporal, histórico de saúde, exames, metabolismo individual e a sua rotina real. Tudo isso muda a leitura.</p>
+          </li>
+          <li>
+            <h3>O que a avaliação acrescenta</h3>
+            <p>Na Renove, a leitura de verdade é presencial, com bioimpedância e médica e nutricionista olhando o seu caso por inteiro.</p>
+          </li>
+          <li>
+            <h3>O combinado honesto</h3>
+            <p>Nenhum número aqui é diagnóstico ou prescrição. Resultados variam conforme histórico, adesão e avaliação individual.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="cta-section" aria-labelledby="tools-cta-title">
+        <div class="cta-copy">
+          <p class="eyebrow">Próximo passo</p>
+          <h2 id="tools-cta-title">Os números já te deram uma direção. Agora vem a leitura clínica.</h2>
+          <p>Chame a Renove pelo WhatsApp para organizar sua avaliação presencial em Bauru. A equipe transforma esses números em um plano que cabe no seu histórico e na sua rotina.</p>
+        </div>
+        <a class="btn btn-primary" data-cta="final_cta" href="https://wa.me/5514981540709?text=Ola%2C%20usei%20as%20calculadoras%20do%20site%20e%20quero%20organizar%20minha%20avaliacao%20presencial.&utm_source=site&utm_medium=cta&utm_campaign=ferramentas&utm_content=final_cta">Organizar minha avaliação</a>
+        <p class="cta-reassurance">Atendimento presencial em Bauru · Sem compromisso · Resposta em até 1 hora.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../assets/logo-renove.png" width="79" height="84" alt="Renove Clinic" loading="lazy">
+          <p>Emagrecimento com acompanhamento médico, nutrição estratégica e cuidado estético. Atendimento presencial em Bauru/SP.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Navegação</h2>
+          <a href="/emagrecimento-bauru/">Emagrecimento</a>
+          <a href="/harmonizacao-facial-bauru/">Harmonização facial</a>
+          <a href="/blog/">Blog</a>
+          <a href="/sobre/">Sobre a Renove</a>
+          <a href="/contato/">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h2>Contato</h2>
+          <a data-cta="footer" href="https://wa.me/5514981540709?text=Ola%2C%20vim%20pelo%20site%20da%20Renove%20Clinic.&utm_source=site&utm_medium=cta&utm_campaign=ferramentas&utm_content=footer">WhatsApp (14) 98154-0709</a>
+          <a href="tel:+5514981540709">(14) 98154-0709</a>
+          <p>Av. Affonso José Aiello, 10-95<br>Vila Aviação, Bauru - SP</p>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>Dra. Juliana Reis - CRM-SP 182.823 | RQE 133.088</span>
+        <span>CNPJ 59.402.454/0001-31</span>
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <span>Resultados variam conforme histórico, adesão e avaliação individual.</span>
+      </div>
+    </footer>
+  </body>
+</html>

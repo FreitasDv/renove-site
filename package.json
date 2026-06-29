@@ -7,7 +7,9 @@
     "qa:content": "node scripts/qa-content.mjs",
     "qa:visual": "node scripts/qa-visual.mjs",
     "qa:a11y": "node scripts/qa-a11y.mjs",
-    "test": "npm run qa:content && npm run qa:a11y && npm run qa:visual",
+    "qa:depth": "node scripts/qa-depth.mjs",
+    "qa:transition": "node scripts/qa-transition.mjs",
+    "test": "npm run qa:content && npm run qa:a11y && npm run qa:depth && npm run qa:visual && npm run qa:transition",
     "serve": "node scripts/serve.mjs"
   }
 }

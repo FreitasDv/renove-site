@@ -323,6 +323,9 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
   );
 
   revealEls.forEach((el) => observer.observe(el));
+  window.setTimeout(() => {
+    revealEls.forEach((el) => el.classList.add("is-revealed"));
+  }, 1200);
 
   /* ---- Carrossel de depoimentos ---- */
   document.querySelectorAll("[data-testimonials]").forEach((root) => {

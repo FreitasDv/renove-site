@@ -53,6 +53,24 @@ const forbiddenInternalPublicTerms = [
   "painel novo",
 ];
 
+const forbiddenCommercialPriceTerms = [
+  "R$",
+  "10x",
+  '"price"',
+  "priceCurrency",
+  "priceRange",
+  "start r$",
+  "bronze r$",
+  "prata r$",
+  "gold r$",
+  "premium r$",
+  ">Start<",
+  ">Bronze<",
+  ">Prata<",
+  ">Gold<",
+  ">Premium<",
+];
+
 const requiredVisibleFacts = [
   "CRM-SP 182.823",
   "RQE 133.088",
@@ -63,12 +81,12 @@ const requiredVisibleFacts = [
 ];
 
 const requiredCopySignals = [
-  ["index.html", "Planos a partir de R$897"],
-  ["index.html", "efeito sanfona"],
-  ["emagrecimento-bauru/index.html", "Antes de chamar"],
-  ["emagrecimento-bauru/index.html", "já voltou antes"],
+  ["index.html", "Atendimento presencial em Bauru"],
+  ["index.html", "retomar com mais clareza"],
+  ["emagrecimento-bauru/index.html", "começar com segurança ou retomar"],
+  ["emagrecimento-bauru/index.html", "plano acompanhado"],
   ["emagrecimento-bauru/index.html", "Acompanhamento semanal"],
-  ["emagrecimento-bauru/index.html", "R$2.797"],
+  ["emagrecimento-bauru/index.html", "O investimento é explicado na avaliação"],
 ];
 
 const requiredSchemaTypes = [
@@ -136,6 +154,12 @@ for (const term of forbiddenInternalPublicTerms) {
   }
 }
 
+for (const term of forbiddenCommercialPriceTerms) {
+  if (combinedPages.includes(term.toLowerCase())) {
+    failures.push(`Unapproved public pricing/commercial ladder term found in HTML/schema: ${term}`);
+  }
+}
+
 for (const [page, html] of pageContents) {
   if (!html) continue;
   if (!html.includes("<title>")) failures.push(`${page}: missing title`);
@@ -173,6 +197,14 @@ for (const [page, signal] of requiredCopySignals) {
   if (!html.toLowerCase().includes(signal.toLowerCase())) {
     failures.push(`${page}: missing strategic copy signal "${signal}"`);
   }
+}
+
+const emagrecimentoHtml = pageContents.find(([page]) => page === "emagrecimento-bauru/index.html")?.[1] ?? "";
+if (!emagrecimentoHtml.includes('class="comparison proof-contrast"')) {
+  failures.push("emagrecimento-bauru/index.html: proof comparison must use the editorial proof-contrast structure");
+}
+if (!styles.includes(".page-lp .proof-section .proof-contrast")) {
+  failures.push("styles.css: missing the page-scoped editorial proof-contrast treatment");
 }
 
 for (const schemaType of requiredSchemaTypes) {

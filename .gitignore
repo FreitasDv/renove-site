@@ -25,3 +25,6 @@ MATERIAL-NECESSARIO.md
 R9_SITE_BENCHMARK_30_REFERENCIAS.md
 RENOVE_R9_SITE_AUTONOMOUS_REBUILD.md
 gtm-export.json
+
+# Backups datados (fora do git)
+*.bak-20*
