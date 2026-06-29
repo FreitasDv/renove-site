@@ -31,8 +31,8 @@ const requireFromRenoveOs = createRequire(path.resolve(root, "../renove-os/packa
 const { chromium } = requireFromRenoveOs("playwright");
 const axe = requireFromRenoveOs("axe-core");
 
-const port = Number(process.env.RENOVE_ATLAS_A11Y_PORT ?? 4198);
-const baseUrl = `http://127.0.0.1:${port}`;
+const requestedPort = Number(process.env.RENOVE_ATLAS_A11Y_PORT ?? 0);
+let baseUrl;
 const routes = [
   "/",
   "/emagrecimento-bauru/",
@@ -141,62 +141,98 @@ function contrastWalker() {
 }
 
 const server = createStaticServer();
-await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));
-const browser = await chromium.launch({ headless: true });
+await new Promise((resolve, reject) => {
+  server.once("error", reject);
+  server.listen(requestedPort, "127.0.0.1", () => {
+    server.off("error", reject);
+    resolve();
+  });
+});
+const address = server.address();
+const port = typeof address === "object" && address ? address.port : requestedPort;
+baseUrl = `http://127.0.0.1:${port}`;
+let browser = await chromium.launch({ headless: true });
 
 const report = [];
 const failures = [];
 
+async function settleClose(label, closeFn) {
+  try {
+    await Promise.race([
+      closeFn(),
+      new Promise((_, reject) => setTimeout(() => reject(new Error(`${label} close timeout`)), 5000)),
+    ]);
+  } catch (error) {
+    console.warn(`A11y QA: ${label} nao encerrou limpo (${error.message}); seguindo com saida controlada.`);
+  }
+}
+
 try {
   for (const route of routes) {
     for (const width of widths) {
-      const page = await browser.newPage({ viewport: { width, height: 980 } });
-      await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle" });
-
-      // 1) axe-core: ruleset WCAG 2.2 A/AA completo.
-      await page.addScriptTag({ content: axe.source });
-      const axeResults = await page.evaluate(async () => {
-        return await window.axe.run(document, {
-          runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"] },
-          resultTypes: ["violations", "incomplete"],
-        });
-      });
-
-      // 2) Walker de contraste: autoridade de texto.
-      const contrastFindings = await page.evaluate(contrastWalker);
-
-      // 3) Reconcilia: violations do axe (exceto color-contrast, que delegamos
-      //    ao walker para evitar falso-negativo em fundo composto).
-      const axeViolations = axeResults.violations.filter((v) => v.id !== "color-contrast");
-      const axeContrastIncomplete = (axeResults.incomplete || []).filter((v) => v.id === "color-contrast");
-
       const routeKey = `${route} @${width}`;
-      report.push({
-        route: routeKey,
-        axeViolations: axeViolations.map((v) => ({
-          id: v.id,
-          impact: v.impact,
-          help: v.help,
-          nodes: v.nodes.map((n) => n.target.join(" ")).slice(0, 6),
-        })),
-        contrastFailures: contrastFindings,
-        axeContrastUndecided: axeContrastIncomplete.reduce((a, v) => a + v.nodes.length, 0),
-      });
+      for (let attempt = 1; attempt <= 2; attempt += 1) {
+        let page;
+        try {
+          console.log(`A11y QA: ${routeKey}${attempt > 1 ? " (retry)" : ""}`);
+          page = await browser.newPage({ viewport: { width, height: 980 } });
+          await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle" });
 
-      for (const v of axeViolations) {
-        const targets = v.nodes.map((n) => n.target.join(" ")).slice(0, 4).join(", ");
-        failures.push(`${routeKey}: [${v.impact || "?"}] ${v.id} -> ${targets}`);
-      }
-      for (const c of contrastFindings) {
-        failures.push(`${routeKey}: contraste ${c.ratio}:1 (precisa ${c.threshold}) "${c.sample}" ${c.selector} ${c.color} sobre ${c.bg}`);
-      }
+          // 1) axe-core: ruleset WCAG 2.2 A/AA completo.
+          await page.addScriptTag({ content: axe.source });
+          const axeResults = await page.evaluate(async () => {
+            return await window.axe.run(document, {
+              runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"] },
+              resultTypes: ["violations", "incomplete"],
+            });
+          });
 
-      await page.close();
+          // 2) Walker de contraste: autoridade de texto.
+          const contrastFindings = await page.evaluate(contrastWalker);
+
+          // 3) Reconcilia: violations do axe (exceto color-contrast, que delegamos
+          //    ao walker para evitar falso-negativo em fundo composto).
+          const axeViolations = axeResults.violations.filter((v) => v.id !== "color-contrast");
+          const axeContrastIncomplete = (axeResults.incomplete || []).filter((v) => v.id === "color-contrast");
+
+          report.push({
+            route: routeKey,
+            axeViolations: axeViolations.map((v) => ({
+              id: v.id,
+              impact: v.impact,
+              help: v.help,
+              nodes: v.nodes.map((n) => n.target.join(" ")).slice(0, 6),
+            })),
+            contrastFailures: contrastFindings,
+            axeContrastUndecided: axeContrastIncomplete.reduce((a, v) => a + v.nodes.length, 0),
+          });
+
+          for (const v of axeViolations) {
+            const targets = v.nodes.map((n) => n.target.join(" ")).slice(0, 4).join(", ");
+            failures.push(`${routeKey}: [${v.impact || "?"}] ${v.id} -> ${targets}`);
+          }
+          for (const c of contrastFindings) {
+            failures.push(`${routeKey}: contraste ${c.ratio}:1 (precisa ${c.threshold}) "${c.sample}" ${c.selector} ${c.color} sobre ${c.bg}`);
+          }
+
+          await page.close();
+          break;
+        } catch (error) {
+          await page?.close().catch(() => {});
+          if (attempt >= 2) throw error;
+          console.warn(`A11y QA: browser reiniciado apos falha em ${routeKey}: ${error.message}`);
+          await settleClose("browser", () => browser.close());
+          browser = await chromium.launch({ headless: true });
+        }
+      }
     }
   }
 } finally {
-  await browser.close();
-  await new Promise((resolve) => server.close(resolve));
+  await settleClose("browser", () => browser.close());
+  server.closeIdleConnections?.();
+  server.closeAllConnections?.();
+  await settleClose("server", () => new Promise((resolve) => server.close(resolve)));
+  server.unref?.();
 }
 
 writeFileSync(path.join(artifactDir, "a11y-report.json"), JSON.stringify(report, null, 2));
@@ -211,3 +247,4 @@ if (failures.length) {
 const totalUndecided = report.reduce((a, r) => a + r.axeContrastUndecided, 0);
 console.log(`A11y gate OK: ${routes.length} rotas x ${widths.length} larguras.`);
 console.log(`axe-core deixou ${totalUndecided} caso(s) de contraste como "incomplete" -> todos reconferidos pelo walker (autoridade), sem violacao.`);
+process.exit(0);

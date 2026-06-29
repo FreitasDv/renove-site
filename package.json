@@ -9,7 +9,9 @@
     "qa:a11y": "node scripts/qa-a11y.mjs",
     "qa:depth": "node scripts/qa-depth.mjs",
     "qa:transition": "node scripts/qa-transition.mjs",
-    "test": "npm run qa:content && npm run qa:a11y && npm run qa:depth && npm run qa:visual && npm run qa:transition",
+    "qa:balance": "node scripts/qa-balance.mjs",
+    "qa:copy-ai": "node scripts/qa-copy-ai.mjs",
+    "test": "npm run qa:content && npm run qa:a11y && npm run qa:depth && npm run qa:visual && npm run qa:transition && npm run qa:balance && npm run qa:copy-ai",
     "serve": "node scripts/serve.mjs"
   }
 }
