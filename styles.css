@@ -64,6 +64,13 @@
      deixando o titulo da secao Metodo minusculo e espremido em 15ch=153px.
      Completa a escala fluida acima de --t-xl, alinhado aos H2 grandes. */
   --t-2xl: clamp(2.1rem, 1.5rem + 2vw, 2.7rem);
+  /* Fatia 3 (escala): heros e titulos editoriais grandes chegavam a 56-59px
+     via clamp() literal hardcoded (56 violacoes da lei de escala). A escala
+     parava em --t-2xl (~43px). Estendida com 3xl/4xl fluidos para que TODO
+     titulo grande use token, nunca clamp avulso. Referencia: type scale
+     modular ate 4xl/5xl p/ headings (Utopia/Typescale 2025). */
+  --t-3xl: clamp(2.35rem, 1.55rem + 3.4vw, 3.7rem);
+  --t-4xl: clamp(2.6rem, 1.8rem + 3.6vw, 4.25rem);
 
   --space-section: clamp(3.5rem, 7vw, 6.5rem);
   --space-section-air: clamp(4.75rem, 9.5vw, 9rem);
@@ -214,7 +221,7 @@ h1, h2, h3, h4 {
 p { text-wrap: pretty; }
 
 h1 {
-  font-size: clamp(2.35rem, 1.55rem + 3.4vw, 3.7rem);
+  font-size: var(--t-3xl);
   line-height: 1.05;
   font-weight: 700;
   letter-spacing: -0.022em;
@@ -600,7 +607,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 .hero-proof-list dd {
   margin: 0.28rem 0 0;
   color: var(--reading);
-  font-size: 0.78rem;
+  font-size: var(--t-xs);
   line-height: 1.35;
 }
 
@@ -788,7 +795,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 
 /* MOVE 3 — salto brutal de tipografia (vale em todas as larguras) */
 .hero-home h1 {
-  font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem);
+  font-size: var(--t-3xl);
   line-height: 1.04;
   letter-spacing: -0.025em;
   max-width: 16ch;
@@ -1333,7 +1340,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
   color: var(--cream);
   font-size: var(--t-2xl);
   line-height: 1.08;
-  max-width: 15ch;
+  max-width: 20ch;
 }
 
 .home-method-copy > p {
@@ -1840,7 +1847,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 .difference-essay h2 {
   margin: 0;
   max-width: 14ch;
-  font-size: clamp(2.1rem, 4.2vw, 4.35rem);
+  font-size: var(--t-4xl);
   line-height: 0.98;
 }
 .difference-essay > p:not(.eyebrow) {
@@ -2845,7 +2852,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 .testimonial-card figcaption {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--t-sm);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -3496,7 +3503,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 
 .faq-lead {
   margin: 0;
-  max-width: 38ch;
+  max-width: 50ch;
   color: var(--reading);
   font-size: var(--t-md);
   line-height: 1.55;
@@ -3552,7 +3559,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   padding: 0 0 1.25rem;
   color: var(--reading);
   line-height: 1.65;
-  max-width: 68ch;
+  max-width: 64ch;
 }
 
 /* ============================================================
@@ -3583,7 +3590,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 
 .subpage-hero h1,
 .contact-hero h1 {
-  font-size: clamp(2.6rem, 1.8rem + 3.6vw, 4.25rem);
+  font-size: var(--t-4xl);
   max-width: 16ch;
 }
 
@@ -4341,7 +4348,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 
 .article-head h1 {
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem);
+  font-size: var(--t-3xl);
   line-height: 1.12;
   margin: 0.75rem 0 1rem;
   max-width: 24ch;
@@ -5161,7 +5168,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 .page-tools .tools-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 1.6rem + 3vw, 3.5rem);
+  font-size: var(--t-3xl);
   line-height: 1.04;
   letter-spacing: -0.015em;
   color: var(--deep-blue);
