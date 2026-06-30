@@ -470,6 +470,49 @@
       if (elTag) elTag.textContent = `Seu roteiro tem ${total} ${total === 1 ? "ponto" : "pontos"}`;
       reveal(out);
       track("checklist_montado", { itens: marcados.length, tem_duvida: !!duvida });
+
+      // Botão copiar checklist — wires up after each render so it has fresh items.
+      const copyBtn = document.getElementById("check-copy");
+      if (copyBtn) {
+        // Remove old listener by replacing node (prevents duplicates across re-submits).
+        const fresh = copyBtn.cloneNode(true);
+        copyBtn.parentNode.replaceChild(fresh, copyBtn);
+        fresh.addEventListener("click", () => {
+          const lines = [...elList.querySelectorAll("li")]
+            .map((li) => "• " + li.textContent)
+            .join("\n");
+          const text = "Meu checklist para a avaliação Renove:\n" + lines;
+          navigator.clipboard
+            .writeText(text)
+            .then(() => {
+              fresh.dataset.state = "copied";
+              const original = fresh.textContent.trim();
+              fresh.textContent = fresh.dataset.copied || "Copiado!";
+              window.setTimeout(() => {
+                fresh.dataset.state = "";
+                fresh.innerHTML =
+                  '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Copiar lista';
+              }, 2000);
+            })
+            .catch(() => {
+              // Fallback: select a temp textarea.
+              const ta = document.createElement("textarea");
+              ta.value = text;
+              ta.style.cssText = "position:fixed;opacity:0;pointer-events:none";
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand("copy");
+              document.body.removeChild(ta);
+              fresh.dataset.state = "copied";
+              fresh.textContent = fresh.dataset.copied || "Copiado!";
+              window.setTimeout(() => {
+                fresh.dataset.state = "";
+                fresh.innerHTML =
+                  '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Copiar lista';
+              }, 2000);
+            });
+        });
+      }
     });
   })();
 })();

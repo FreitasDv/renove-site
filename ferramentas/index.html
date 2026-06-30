@@ -228,11 +228,13 @@
           <form class="tool-form" id="imc-form" novalidate>
             <div class="tool-field">
               <label for="imc-peso">Peso (kg)</label>
-              <input type="number" id="imc-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off">
+              <input type="number" id="imc-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off" aria-describedby="imc-peso-hint">
+              <span class="tool-field-hint" id="imc-peso-hint">Peso de manhã, em jejum, é o mais estável.</span>
             </div>
             <div class="tool-field">
               <label for="imc-altura">Altura (cm)</label>
-              <input type="number" id="imc-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off">
+              <input type="number" id="imc-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off" aria-describedby="imc-altura-hint">
+              <span class="tool-field-hint" id="imc-altura-hint">Sem sapatos. 1,68 m → digite 168.</span>
             </div>
             <button type="submit" class="btn btn-primary tool-submit">Calcular IMC</button>
           </form>
@@ -256,6 +258,7 @@
               <li>Obesidade</li>
             </ul>
             <a class="btn btn-secondary tool-cta" id="imc-cta" data-cta="tool_imc" href="#" target="_blank" rel="noopener">Conversar sobre o meu caso</a>
+            <p class="tool-next-step">Passo seguinte na trilha: <a href="#calc-tdee" class="tool-next-link">calcular seu gasto calórico diário →</a></p>
           </output>
         </div>
       </section>
@@ -275,18 +278,22 @@
                 <option value="f">Feminino</option>
                 <option value="m">Masculino</option>
               </select>
+              <span class="tool-field-hint">Usado para a fórmula de Mifflin-St Jeor.</span>
             </div>
             <div class="tool-field">
               <label for="tdee-idade">Idade</label>
-              <input type="number" id="tdee-idade" name="idade" inputmode="numeric" min="14" max="100" step="1" placeholder="Ex.: 38" autocomplete="off">
+              <input type="number" id="tdee-idade" name="idade" inputmode="numeric" min="14" max="100" step="1" placeholder="Ex.: 38" autocomplete="off" aria-describedby="tdee-idade-hint">
+              <span class="tool-field-hint" id="tdee-idade-hint">O metabolismo basal diminui com a idade; isso muda o resultado.</span>
             </div>
             <div class="tool-field">
               <label for="tdee-peso">Peso (kg)</label>
-              <input type="number" id="tdee-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off">
+              <input type="number" id="tdee-peso" name="peso" inputmode="decimal" min="30" max="350" step="0.1" placeholder="Ex.: 82" autocomplete="off" aria-describedby="tdee-peso-hint">
+              <span class="tool-field-hint" id="tdee-peso-hint">Peso atual, de manhã em jejum.</span>
             </div>
             <div class="tool-field">
               <label for="tdee-altura">Altura (cm)</label>
-              <input type="number" id="tdee-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off">
+              <input type="number" id="tdee-altura" name="altura" inputmode="numeric" min="120" max="230" step="1" placeholder="Ex.: 168" autocomplete="off" aria-describedby="tdee-altura-hint">
+              <span class="tool-field-hint" id="tdee-altura-hint">Sem sapatos. 1,68 m → 168.</span>
             </div>
             <div class="tool-field tool-field-wide">
               <label for="tdee-atividade">Nível de atividade</label>
@@ -297,6 +304,7 @@
                 <option value="1.725">Intenso — exercício 6 a 7 dias/semana</option>
                 <option value="1.9">Muito intenso — treino pesado ou trabalho físico</option>
               </select>
+              <span class="tool-field-hint">Na dúvida, escolha "Leve" — é melhor subestimar do que superestimar.</span>
             </div>
             <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Calcular gasto diário</button>
           </form>
@@ -317,6 +325,7 @@
               <div><dt>Proteína sugerida</dt><dd id="tdee-protein">—</dd></div>
             </dl>
             <a class="btn btn-secondary tool-cta" id="tdee-cta" data-cta="tool_tdee" href="#" target="_blank" rel="noopener">Montar meu plano com a equipe</a>
+            <p class="tool-next-step">Passo seguinte na trilha: <a href="#calc-meta" class="tool-next-link">estimar tempo para a sua meta →</a></p>
           </output>
         </div>
       </section>
@@ -332,11 +341,13 @@
           <form class="tool-form tool-form-grid" id="meta-form" novalidate>
             <div class="tool-field">
               <label for="meta-atual">Peso atual (kg)</label>
-              <input type="number" id="meta-atual" name="atual" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 88" autocomplete="off">
+              <input type="number" id="meta-atual" name="atual" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 88" autocomplete="off" aria-describedby="meta-atual-hint">
+              <span class="tool-field-hint" id="meta-atual-hint">Peso de hoje — base do cálculo.</span>
             </div>
             <div class="tool-field">
               <label for="meta-desejado">Peso desejado (kg)</label>
-              <input type="number" id="meta-desejado" name="desejado" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 72" autocomplete="off">
+              <input type="number" id="meta-desejado" name="desejado" inputmode="decimal" min="35" max="350" step="0.1" placeholder="Ex.: 72" autocomplete="off" aria-describedby="meta-desejado-hint">
+              <span class="tool-field-hint" id="meta-desejado-hint">Onde você quer chegar. Pode ser ajustado com a médica depois.</span>
             </div>
             <div class="tool-field tool-field-wide">
               <label for="meta-ritmo">Ritmo de perda</label>
@@ -345,6 +356,7 @@
                 <option value="0.75">Moderado — ~0,75 kg/semana</option>
                 <option value="1">Acelerado — ~1 kg/semana (requer acompanhamento)</option>
               </select>
+              <span class="tool-field-hint">Para a maioria, "Gradual" produz resultados que ficam. Acelerado pode parecer atraente, mas exige supervisão médica.</span>
             </div>
             <button type="submit" class="btn btn-primary tool-submit tool-field-wide">Estimar tempo</button>
           </form>
@@ -371,6 +383,7 @@
               </span>
             </div>
             <a class="btn btn-secondary tool-cta" id="meta-cta" data-cta="tool_meta" href="#" target="_blank" rel="noopener">Quero um plano pra essa meta</a>
+            <p class="tool-next-step">Passo seguinte na trilha: <a href="#calc-perfil" class="tool-next-link">descobrir seu momento agora →</a></p>
           </output>
         </div>
       </section>
@@ -436,6 +449,7 @@
             </ul>
             <p class="tool-result-text" id="quiz-text"></p>
             <a class="btn btn-secondary tool-cta" id="quiz-cta" data-cta="tool_quiz" href="#" target="_blank" rel="noopener">Conversar sobre o meu momento</a>
+            <p class="tool-next-step">Último passo da trilha: <a href="#calc-checklist" class="tool-next-link">montar seu checklist para a consulta →</a></p>
           </output>
         </div>
       </section>
@@ -474,7 +488,13 @@
             </div>
             <p class="tool-result-text" id="check-text"></p>
             <ul class="tool-check-summary" id="check-list"></ul>
-            <a class="btn btn-secondary tool-cta" id="check-cta" data-cta="tool_checklist" href="#" target="_blank" rel="noopener">Levar meu checklist pro WhatsApp</a>
+            <div class="tool-check-actions">
+              <a class="btn btn-secondary tool-cta" id="check-cta" data-cta="tool_checklist" href="#" target="_blank" rel="noopener">Levar meu checklist pro WhatsApp</a>
+              <button class="btn btn-ghost tool-copy-btn" id="check-copy" type="button" aria-label="Copiar checklist" data-copied="Copiado!">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Copiar lista
+              </button>
+            </div>
           </output>
         </div>
       </section>

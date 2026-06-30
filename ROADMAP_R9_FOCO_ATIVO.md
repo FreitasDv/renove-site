@@ -3,7 +3,7 @@
 > Arquivo-âncora da missão de rebuild do site R9 em `tools/renove-atlas-site`.
 > Se eu (qualquer IA) reabrir esta sessão, LER ESTE ARQUIVO PRIMEIRO antes de agir.
 > Fonte de verdade do escopo: `RENOVE_R9_SITE_AUTONOMOUS_REBUILD.md`.
-> Última atualização: 2026-06-27.
+> Última atualização: 2026-06-29.
 
 ## Missão (carta branca do João, 2026-06-25)
 Evoluir o site local com profundidade de produto: benchmark real, matar cara de
@@ -30,6 +30,47 @@ WCAG: texto normal ≥4.5, texto grande (≥24px ou ≥18.66px bold) ≥3.0, dec
 Console Windows: usar PYTHONIOENCODING=utf-8 nos prints com − (U+2212) e ★.
 
 ---
+
+## ✅ FATIA 6 (UX de fechamento — ferramentas) 2026-06-29
+- **6-A: G1 placeholder de pré-resultado** em cada calculadora: coluna da direita mostra
+  texto contextual + glifo `⌖` antes do usuário calcular (IMC, TDEE, Meta, Quiz, Checklist).
+  Padrão `.tool-preview` adicionado ao HTML e CSS. Ferramenta não fica "em branco" ao carregar.
+- **6-B: G5 link "próximo passo da trilha"** em cada resultado: IMC→TDEE, TDEE→Meta,
+  Meta→Quiz, Quiz→Checklist. `<a class="tool-next-step">` inserido em cada `<output>` com
+  texto contextualizado ("Calcule o seu gasto calórico total", "Estime o tempo...").
+  Em `tools.js`: `reveal()` descola scroll para o campo do próximo passo após delay.
+- **6-C: botão "Copiar lista" no checklist** de prontidão: botão com ícone SVG de clipboard
+  dentro do `#check-result`; JS em `tools.js` usa `navigator.clipboard.writeText` (fallback
+  execCommand) com feedback "Copiado!" 2 s. Clone-node para evitar listener duplicado em
+  re-submits. UTM e mensagem WhatsApp preservadas.
+- **6-D: microfeedback inline nos campos** de todas as calculadoras: `<span class="tool-field-hint">`
+  após cada input/select com dica contextual (`aria-describedby` para acessibilidade).
+  IMC: "Peso de manhã, em jejum" / "Sem sapatos. 1,68 m → 168". TDEE: fórmula, jejum,
+  "Na dúvida, Leve". Meta: "Peso de hoje" / "Pode ser ajustado" / aviso sobre ritmo
+  acelerado. CSS `.tool-field-hint` adicionado ao `styles.css` (0.78rem, cor `--muted`).
+- **6-E: npm test EXIT 0** — todos os 10 gates verdes confirmados:
+  content (10p/7a), a11y (10×3), depth (7), visual (11×5), transition (5×5),
+  balance (10 avisos não-bloqueantes, igual Fatia 5), copy-ai (1 aviso política de privacidade,
+  não-bloqueante), header, grid-align, typography.
+- **PRÓXIMO**: Fatia 7 — aguardar decisão do João sobre material real (B1 foto única,
+  B2 depoimentos, B3 resultados) ou avançar para otimização de performance/SEO técnico.
+
+## ✅ FATIA 5 (voz/copy de dinheiro e processo) 2026-06-29
+- Auditoria de copy fria/burocrática em todas as páginas (emag, HOF, sobre, home).
+- Padrão identificado: "é definido", "são definidos", "conforme necessidade clínica",
+  "responsabilidade clínica" — voz passiva que gelava a leitura sem ganho de compliance.
+- Fixes aplicados em 4 arquivos:
+  - `emagrecimento-bauru/index.html`: FAQ custo (JSON-LD + visível), FAQ horários,
+    FAQ formato, micro-note linha ~470, summary-list-lite "Investimento"/"Presença".
+  - `harmonizacao-facial-bauru/index.html`: FAQ custo (JSON-LD + visível, título
+    renomeado para "Quanto custa..."), micro-note "Indicações, valores...".
+  - `sobre/index.html`: pilar "Autoridade médica" (nomeou Dra. Juliana, eliminou
+    "responsabilidade clínica" burocrático).
+- Voz ativa e quente mantendo compliance: sem fármaco, sem kg+prazo, sem promessa
+  absoluta. Disclaimers "Resultados variam" preservados (4× emag, 2× HOF, 2× home).
+- Gates 10/10 verdes (npm test EXIT 0): content, a11y (10×3), depth (7), visual
+  (11×5), transition, balance, copy-ai, header, grid-align, typography.
+- PRÓXIMO: Fatia 6 — gate final/QA de fechamento + check do SPEC seção 8.
 
 ## ✅ FATIA 4 (movimento + folhas) 2026-06-28
 - Auditoria das 3 leis de movimento do SPEC (medido, não estimado):
@@ -110,6 +151,20 @@ Console Windows: usar PYTHONIOENCODING=utf-8 nos prints com − (U+2212) e ★.
     map (contato), blog-index. + qualifier (emag) e home-method já corrigidos antes.
   - 4 gates verdes: content, a11y, depth (7 rotas), visual (11×5).
 - PRÓXIMO: Fatia 2 (sistema de transição T1-T4, matar cortes retos).
+
+## ✅ COPY HOF — PONTOS FRIOS RESIDUAIS (7ª passada) 2026-06-29
+- Auditoria completa de tom: home, emag, hof, sobre, contato.
+- Home, sobre, contato: copy já estava quente (sem alteração necessária).
+- HOF — 2 pontos frios corrigidos:
+  - `faq-lead`: "Aqui a pessoa normalmente quer saber..." (3ª pessoa, frio)
+    → "Normalmente a dúvida trava em três pontos: vai ficar natural? Preciso
+    passar por avaliação? E como a decisão é tomada sem me empurrarem procedimento?"
+  - CTA final `.cta-section`: "Chamar no WhatsApp" (robótico, AGENTS.md proíbe)
+    → "Quero entender meu caso"
+- Confirmado: FAQ valores + micro-note já estavam humanizados (5ª passada 2026-06-28).
+- CTAs inventariados: todos os btns primários usam tom de intenção — nenhum robótico.
+- Gates: copy-ai (aviso privacidade, não-bloqueante), content/a11y/visual/depth OK,
+  balance (10 avisos conhecidos — sem regressão introduzida hoje).
 
 ## ✅ COPY AMPLA + PROFUNDIDADE SEÇÕES CLARAS (6ª passada) 2026-06-28
 - Copy humanizada estendida a TODAS as páginas (não só críticos):

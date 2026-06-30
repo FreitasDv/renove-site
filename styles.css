@@ -5578,6 +5578,13 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 .page-tools .tool-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .page-tools .tool-field { display: flex; flex-direction: column; gap: 0.4rem; }
+/* Microfeedback contextual abaixo de cada campo */
+.page-tools .tool-field-hint {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: 0.1rem;
+}
 .page-tools .tool-field-wide { grid-column: 1 / -1; }
 /* Campos numericos curtos (peso, altura, idade) nao precisam de regua larga —
    travar a largura sinaliza o tamanho da resposta esperada (convencao de UX). */
@@ -5970,6 +5977,60 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 .page-tools .tool-cta { margin-top: 1.4rem; }
 
+/* G5 — próximo passo da trilha (aparece abaixo do CTA após calcular) */
+.page-tools .tool-next-step {
+  margin: 0.9rem 0 0;
+  font-size: var(--t-sm);
+  color: var(--muted);
+  line-height: 1.5;
+}
+.page-tools .tool-next-link {
+  color: var(--petrol);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s, color 0.18s;
+}
+.page-tools .tool-next-link:hover,
+.page-tools .tool-next-link:focus-visible {
+  color: var(--deep-blue);
+  border-bottom-color: var(--petrol);
+}
+
+/* G1 — ações do checklist (WhatsApp + Copiar lista em linha) */
+.page-tools .tool-check-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  align-items: center;
+}
+.page-tools .tool-check-actions .tool-cta { margin-top: 0; }
+.page-tools .tool-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: var(--t-sm);
+  padding: 0.5em 1em;
+  border-radius: var(--radius-pill, 999px);
+  border: 1.5px solid var(--line-soft);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+  white-space: nowrap;
+}
+.page-tools .tool-copy-btn:hover,
+.page-tools .tool-copy-btn:focus-visible {
+  color: var(--petrol);
+  border-color: var(--petrol);
+  background: rgba(41, 108, 123, 0.06);
+}
+.page-tools .tool-copy-btn[data-state="copied"] {
+  color: var(--petrol);
+  border-color: var(--petrol);
+}
+
 /* Disclaimer — reestruturado em cabecalho + grade de 3 pontos pra matar
    o "muro de texto em fundo bege" e dar ritmo de leitura. */
 .page-tools .tool-disclaimer {
@@ -6262,6 +6323,13 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 }
 
 /* ---------- /harmonizacao-facial-bauru/ (page-aesthetic) ---------- */
+/* B1 qualifier(CLARO) -> timeline(SAND/warm): hairline T3 separa sem corte. */
+.page-aesthetic .timeline-section { position: relative; }
+.page-aesthetic .timeline-section::before {
+  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: min(72%, 60rem); height: 1px; pointer-events: none; z-index: 1;
+  background: linear-gradient(90deg, transparent, var(--rule, rgba(0,0,0,.12)) 22%, var(--rule, rgba(0,0,0,.12)) 78%, transparent);
+}
 /* B6 faq(CLARO) -> cta(PROFUNDO): véu paper no topo do bloco escuro. */
 .page-aesthetic .cta-section { position: relative; }
 .page-aesthetic .cta-section::before {
