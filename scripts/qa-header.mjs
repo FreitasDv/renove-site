@@ -38,7 +38,7 @@ const { server, port } = await new Promise((resolve, reject) => {
   srv.once("error", reject);
   srv.listen(0, "127.0.0.1", () => resolve({ server: srv, port: srv.address().port }));
 });
-const baseUrl = `http://127.0.0.1:${port}`;
+const baseUrl = `http://127.0.0.1:${port}/renove-site`;
 
 const browser = await chromium.launch();
 const failures = [];

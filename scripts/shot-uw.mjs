@@ -10,7 +10,7 @@ const { chromium } = requireFromRenoveOs("playwright");
 const routes = [["/index.html", "home"], ["/emagrecimento-bauru/index.html", "lp"], ["/sobre/index.html", "sobre"]];
 const widths = [1920, 1440];
 const port = 4244;
-const baseUrl = `http://127.0.0.1:${port}`;
+const baseUrl = `http://127.0.0.1:${port}/renove-site`;
 
 const server = createStaticServer();
 await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));

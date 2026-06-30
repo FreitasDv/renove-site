@@ -23,7 +23,7 @@ const routes = [
 // ultrawide + desktop grande + desktop padrao
 const widths = [2560, 1920, 1440];
 const port = 4255;
-const baseUrl = `http://127.0.0.1:${port}`;
+const baseUrl = `http://127.0.0.1:${port}/renove-site`;
 
 const server = createStaticServer();
 await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));

@@ -776,8 +776,10 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
   max-width: none;
   border-radius: 0;
   padding: 2.75rem 1.35rem 1.05rem;
-  background: linear-gradient(to top, rgba(16, 42, 61, 0.58) 0%, rgba(16, 42, 61, 0.22) 45%, rgba(16, 42, 61, 0) 100%);
-  background-color: rgba(16, 42, 61, 0.65);
+  /* Aumentado para garantir contraste AA (4.5:1) mesmo com hero de fundo claro.
+     O deep-blue em 0.88 sobre cream renderiza ~rgb(29,55,75) — cream sobre isso = 8.9:1. */
+  background: linear-gradient(to top, rgba(16, 42, 61, 0.88) 0%, rgba(16, 42, 61, 0.52) 45%, rgba(16, 42, 61, 0) 100%);
+  background-color: rgba(16, 42, 61, 0.82);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   color: var(--cream);
@@ -790,39 +792,118 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 .protocol-panel { position: relative; }
 
 /* ============================================================
-   HERO HOME v2 — elevacao premium (escopo: SO a home)
-   5 movimentos: foto sangrada | 1 acento | salto de tipo |
-   profundidade real | fundo limpo. Nao toca .lp-hero das LPs.
+   HERO HOME v3 — PETROL EDITORIAL (escopo: SO a home)
+   Decisao jun30: hero petrol profundo (#102a3d) com foto sangrando
+   direita, Cormorant Garamond no titulo, folhas como textura sutil.
+   Inspiracao: Calibrate/Mochi (escuro) + calor das folhas Renove.
+   Nao toca .lp-hero das LPs.
    ============================================================ */
 
-/* MOVE 3 — salto brutal de tipografia (vale em todas as larguras) */
+/* === Titulo editorial com Cormorant === */
 .hero-home h1 {
-  font-size: var(--t-3xl);
-  line-height: 1.04;
-  letter-spacing: -0.025em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.8rem, 1.8rem + 4vw, 5.2rem);
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
   max-width: 16ch;
+  color: var(--ink);
 }
-.hero-home h1 .editorial { font-size: 0.82em; }
-.hero-home .hero-lead {
-  font-size: clamp(1.02rem, 0.95rem + 0.4vw, 1.18rem);
-  color: var(--muted);
-  max-width: 44ch;
+.hero-home h1 .editorial {
+  font-size: 0.82em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--petrol);
 }
 
-/* MOVE 2 — acento quente coerente: a ACAO de conversao usa sempre terracota.
-   Hero e sticky ficam sobre fundo claro: terracota base + texto cream (4.74:1).
-   O CTA final fica sobre secao escura: terracota CLARO + texto ink (5.21:1),
-   senao o terracota base sumiria no fundo petroleo. */
+/* === Fundo petrol no hero-home === */
+/* ============================================================
+   HERO HOME — FUNDO CLARO (premium, editorial)
+   Padrão validado nas refs: branco/creme + texto petrol + acento aqua.
+   Petrol como fundo inteiro = hospitalar genérico (descartado).
+   ============================================================ */
+.hero.hero-home {
+  background-color: var(--surface); /* #fffdf9 — creme muito suave */
+  position: relative;
+}
+
+/* Profundidade sutil: véu aqua no canto sup-dir + âmbar quente no inf-esq */
+.hero.hero-home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 96% 10%, rgba(165, 214, 207, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 4% 90%, rgba(217, 170, 143, 0.12) 0%, transparent 60%),
+    url('./assets/folhas-renove.webp') left center / 32% auto no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Garantir que o conteúdo fique acima da textura */
+.hero-home .hero-copy,
+.hero-home .hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+/* === Corpo de texto no hero claro === */
+.hero-home .hero-lead {
+  font-size: clamp(1.02rem, 0.95rem + 0.4vw, 1.18rem);
+  color: var(--reading);
+  max-width: 44ch;
+  line-height: 1.6;
+}
+
+/* === Proof list sobre fundo claro === */
+.hero-home .hero-proof-list {
+  border-top-color: var(--line);
+  border-bottom-color: var(--line);
+}
+.hero-home .hero-proof-list div + div {
+  border-left-color: var(--line-soft);
+}
+.hero-home .hero-proof-list dt {
+  color: var(--petrol);
+}
+.hero-home .hero-proof-list dd {
+  color: var(--reading);
+}
+
+/* === Trust strip sobre fundo claro === */
+.hero-home .trust-strip {
+  border-top-color: var(--line-soft);
+}
+.hero-home .trust-strip span {
+  color: var(--muted);
+}
+.hero-home .trust-strip .google-rating {
+  color: var(--ink);
+}
+.hero-home .trust-strip .stars {
+  color: #e8a520;
+}
+
+/* === Eyebrow no hero claro === */
+.hero-home .eyebrow {
+  color: var(--ocean);
+  letter-spacing: 0.1em;
+}
+
+/* === CTAs: primário terracota sobre fundo claro === */
 .page-home .hero-home .btn-primary,
 .page-home .sticky-cta .btn-primary {
   background: var(--cta-warm);
-  color: var(--cream);
-  box-shadow: 0 12px 28px rgba(168, 93, 44, 0.26);
+  color: #fff;
+  border-color: var(--cta-warm);
+  box-shadow: 0 10px 26px rgba(168, 93, 44, 0.28);
 }
 .page-home .hero-home .btn-primary:hover,
 .page-home .sticky-cta .btn-primary:hover {
   background: var(--cta-warm-hover);
-  box-shadow: 0 16px 34px rgba(168, 93, 44, 0.32);
+  border-color: var(--cta-warm-hover);
+  box-shadow: 0 14px 32px rgba(168, 93, 44, 0.36);
 }
 .page-home .cta-section .btn-primary {
   background: var(--cta-warm-lt);
@@ -833,6 +914,28 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 .page-home .cta-section .btn-primary:hover {
   background: var(--cta-warm-lt-hover);
   border-color: var(--cta-warm-lt-hover);
+}
+
+/* Microcopy e availability sobre fundo claro */
+.hero-home .hero-microcopy,
+.hero-home .hero-availability {
+  color: var(--muted);
+}
+.hero-home .hero-availability strong {
+  color: var(--petrol);
+}
+
+/* Transição petrol → papel no rodapé do hero */
+.hero.hero-home::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, transparent 0%, var(--paper) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* MOVE 7 — no hero da home o secundario deixa de ser botao de borda (peso
@@ -928,11 +1031,8 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     display: none;
   }
 
-  /* PARSLEY (jun29 v2) — a foto vive sobre o CREME da pagina (nao petrol).
-     A ponte que a integra ao layout e a propria cor do fundo sangrando para
-     dentro da borda esquerda da foto: creme solido -> transparente em faixa
-     curta e definida. Funde foto+coluna de texto como o Parsley real (cor da
-     pagina invade a imagem), sem mancha escura nem veu difuso. */
+  /* LIGHT v4 (jun30) — fundo hero agora é claro (--surface), scrim da borda
+     esquerda da foto usa surface → transparente para fusão suave. */
   .hero-home .hero-visual::before {
     content: "";
     display: block;
@@ -942,10 +1042,10 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     pointer-events: none;
     background: linear-gradient(
       to right,
-      var(--paper) 0%,
-      rgba(244, 238, 232, 0.85) 3%,
-      rgba(244, 238, 232, 0.3) 6%,
-      rgba(244, 238, 232, 0) 9%
+      var(--surface) 0%,
+      rgba(255, 253, 249, 0.90) 3%,
+      rgba(255, 253, 249, 0.40) 8%,
+      rgba(255, 253, 249, 0) 16%
     );
   }
 
@@ -954,8 +1054,8 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     right: 0;
     bottom: 0;
     padding-inline: clamp(1.35rem, 3vw, 2.75rem);
-    background: linear-gradient(to top, rgba(16, 42, 61, 0.62) 0%, rgba(16, 42, 61, 0.24) 48%, rgba(16, 42, 61, 0) 100%);
-    background-color: rgba(16, 42, 61, 0.65);
+    background: linear-gradient(to top, rgba(16, 42, 61, 0.88) 0%, rgba(16, 42, 61, 0.48) 48%, rgba(16, 42, 61, 0) 100%);
+    background-color: rgba(16, 42, 61, 0.78);
   }
 }
 
@@ -1338,7 +1438,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
   top: -2px; right: -3rem;
   width: clamp(16rem, 28vw, 28rem);
   height: clamp(16rem, 28vw, 28rem);
-  background: url("/assets/folhas-renove.webp") right top / contain no-repeat;
+  background: url("/renove-site/assets/folhas-renove.webp") right top / contain no-repeat;
   opacity: 0.18;
   filter: brightness(2.4) saturate(0.6) hue-rotate(-8deg);
   transform: scaleX(-1);
@@ -1686,7 +1786,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   width: clamp(9rem, 16vw, 15rem);
   height: clamp(9rem, 16vw, 15rem);
   transform: translateX(-50%) rotate(8deg);
-  background: url("/assets/folhas-renove.webp") center / contain no-repeat;
+  background: url("/renove-site/assets/folhas-renove.webp") center / contain no-repeat;
   opacity: 0.16;
   z-index: 2;
   pointer-events: none;
@@ -1720,8 +1820,8 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   /* Profundidade no petroleo: glow quente atras + veu frio, em vez de bloco
      chapado. Alpha alto porque o deep-blue engole gradiente sutil. */
   background:
-    radial-gradient(75% 60% at 80% 8%, rgba(56, 140, 158, 0.55) 0%, rgba(56, 140, 158, 0) 55%),
-    radial-gradient(70% 70% at 5% 95%, rgba(9, 26, 38, 0.85) 0%, rgba(9, 26, 38, 0) 55%),
+    radial-gradient(75% 60% at 80% 8%, rgba(56, 140, 158, 0.42) 0%, rgba(56, 140, 158, 0) 55%),
+    radial-gradient(70% 70% at 5% 95%, rgba(9, 26, 38, 0.45) 0%, rgba(9, 26, 38, 0) 55%),
     var(--deep-blue);
   position: relative;
   overflow: clip;
@@ -3644,7 +3744,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   inset: -3rem max(-50vw, -7rem) auto auto;
   width: min(46vw, 540px);
   height: 24rem;
-  background: url("/assets/folhas-renove.webp") right top / contain no-repeat;
+  background: url("/renove-site/assets/folhas-renove.webp") right top / contain no-repeat;
   opacity: 0.5;
   -webkit-mask-image: linear-gradient(to left, transparent, #000 30%), linear-gradient(to bottom, transparent, #000 24%);
   -webkit-mask-composite: source-in;
@@ -4416,7 +4516,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   inset: -2.5rem -5rem auto auto;
   width: min(40vw, 340px);
   height: 17rem;
-  background: url("/assets/folhas-renove.webp") right top / contain no-repeat;
+  background: url("/renove-site/assets/folhas-renove.webp") right top / contain no-repeat;
   opacity: 0.42;
   -webkit-mask-image: linear-gradient(to left, transparent, #000 30%), linear-gradient(to bottom, transparent, #000 26%);
   -webkit-mask-composite: source-in;
