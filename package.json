@@ -11,7 +11,12 @@
     "qa:transition": "node scripts/qa-transition.mjs",
     "qa:balance": "node scripts/qa-balance.mjs",
     "qa:copy-ai": "node scripts/qa-copy-ai.mjs",
-    "test": "npm run qa:content && npm run qa:a11y && npm run qa:depth && npm run qa:visual && npm run qa:transition && npm run qa:balance && npm run qa:copy-ai",
+    "qa:header": "node scripts/qa-header.mjs",
+    "qa:grid-align": "node scripts/qa-grid-align.mjs",
+    "qa:typography": "node scripts/qa-typography.mjs",
+    "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
+    "shot:mf": "node scripts/shot-multiformato.mjs",
+    "test": "npm run qa:content && npm run qa:a11y && npm run qa:depth && npm run qa:visual && npm run qa:transition && npm run qa:balance && npm run qa:copy-ai && npm run qa:header && npm run qa:grid-align && npm run qa:typography",
     "serve": "node scripts/serve.mjs"
   }
 }

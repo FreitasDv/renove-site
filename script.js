@@ -327,6 +327,46 @@ document.querySelectorAll(".main-nav a").forEach((link) => {
     revealEls.forEach((el) => el.classList.add("is-revealed"));
   }, 1200);
 
+  /* ---- Count-up dos números de prova (FATIA 4) ----
+     Anima do 0 ao valor final quando o número entra na viewport.
+     reduceMotion já retornou acima, então aqui o movimento é permitido.
+     O texto final fica no HTML como fallback (sem JS, mostra o número certo). */
+  const countEls = document.querySelectorAll(".count-up[data-count-to]");
+  if (countEls.length) {
+    const fmt = (val, decimals) => {
+      const s = decimals > 0 ? val.toFixed(decimals) : String(Math.round(val));
+      return s.replace(".", ","); // pt-BR
+    };
+    const runCount = (el) => {
+      const to = parseFloat(el.getAttribute("data-count-to"));
+      const decimals = parseInt(el.getAttribute("data-count-decimals") || "0", 10);
+      const suffix = el.getAttribute("data-count-suffix") || "";
+      if (!Number.isFinite(to)) return;
+      const dur = 1100;
+      const t0 = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+        el.textContent = fmt(to * eased, decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = fmt(to, decimals) + suffix;
+      };
+      requestAnimationFrame(tick);
+    };
+    const countObs = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            runCount(entry.target);
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.6 }
+    );
+    countEls.forEach((el) => countObs.observe(el));
+  }
+
   /* ---- Carrossel de depoimentos ---- */
   document.querySelectorAll("[data-testimonials]").forEach((root) => {
     const track = root.querySelector(".tc-track");

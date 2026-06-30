@@ -92,8 +92,11 @@
   --motion-medium: 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
   --motion-slow: 520ms cubic-bezier(0.2, 0.6, 0.2, 1);
 
-  /* Largura em camadas: leitura (texto) x conteudo (grids/secoes largas).
-     Sobe por degraus conforme a tela cresce, sem esticar o texto. */
+  /* Largura em camadas: UM unico eixo externo para TODAS as secoes
+     (--container == --container-wide), para que as bordas esquerdas
+     coincidam. A largura de LEITURA do texto e controlada por max-width
+     em ch nos proprios blocos (.section-heading, .hero-copy), nao pelo
+     container externo. Isso elimina o desalinhamento entre secoes. */
   --container: 1140px;
   --container-wide: 1140px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -103,26 +106,25 @@
    Teto deliberado: alem disso o site vira "cards largos e vazios". */
 @media (min-width: 1440px) {
   :root {
-    --container: 1200px;
+    --container: 1440px;
     --container-wide: 1440px;
   }
 }
 
 /* Ultrawide (>=1920): grids/secoes largas respiram mais para nao virar
-   "card no meio do deserto". O texto (--container) sobe pouco, para nao
-   esticar a linha de leitura; o conteudo-wide ocupa bem mais da viewport. */
+   "card no meio do deserto". Eixo unico — texto continua curto via ch. */
 @media (min-width: 1920px) {
   :root {
-    --container: 1280px;
+    --container: 1680px;
     --container-wide: 1680px;
     --gutter: clamp(3rem, 5vw, 6rem);
   }
 }
 
-/* Cinema (>=2400): mais um degrau para 2560+, sem esticar o texto. */
+/* Cinema (>=2400): mais um degrau para 2560+, eixo unico. */
 @media (min-width: 2400px) {
   :root {
-    --container: 1360px;
+    --container: 2000px;
     --container-wide: 2000px;
   }
 }
@@ -882,7 +884,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     column-gap: clamp(1.5rem, 3vw, 3.5rem);
     grid-template-columns:
       max(var(--gutter), calc((100% - var(--container-wide)) / 2))
-      minmax(0, 33rem)
+      minmax(0, clamp(33rem, 34vw, 46rem))
       minmax(0, 1fr);
   }
 
@@ -913,8 +915,38 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
     border-radius: 0;
     box-shadow: none;
     filter: none;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%);
-    mask-image: linear-gradient(to right, transparent, #000 10%);
+    /* PARSLEY (jun29 v2): sem mask-image. A borda esquerda funde no creme da
+       pagina via scrim creme->transparente abaixo (cor do fundo invade a
+       foto) — corte coeso e curto, nao veu difuso nem mancha escura. */
+  }
+
+  /* jun29 v3 — CAUSA RAIZ do "veu branco" no centro/topo-esq da foto: o
+     hero-glow pintava um radial creme (rgba 244,238,232) em 12% 8%, bem sobre
+     o rosto/ombro da mulher. A foto crua e limpa (verificado), entao o glow
+     so suja. No hero-home ele e removido; a unica ponte e o scrim lateral. */
+  .hero-home .hero-visual .hero-glow {
+    display: none;
+  }
+
+  /* PARSLEY (jun29 v2) — a foto vive sobre o CREME da pagina (nao petrol).
+     A ponte que a integra ao layout e a propria cor do fundo sangrando para
+     dentro da borda esquerda da foto: creme solido -> transparente em faixa
+     curta e definida. Funde foto+coluna de texto como o Parsley real (cor da
+     pagina invade a imagem), sem mancha escura nem veu difuso. */
+  .hero-home .hero-visual::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      var(--paper) 0%,
+      rgba(244, 238, 232, 0.85) 3%,
+      rgba(244, 238, 232, 0.3) 6%,
+      rgba(244, 238, 232, 0) 9%
+    );
   }
 
   .hero-home .hero-visual figcaption {
@@ -935,10 +967,12 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
   .hero.hero-home {
     grid-template-columns:
       minmax(var(--gutter), 13rem)
-      minmax(0, 40rem)
+      minmax(0, 46rem)
       minmax(0, 1fr);
   }
-  .hero-home .hero-copy { max-width: 40rem; }
+  .hero-home .hero-copy { max-width: 46rem; }
+  .hero-home h1 { max-width: 19ch; }
+  .hero-home .hero-lead { max-width: 50ch; }
 }
 
 /* CINEMA (>=2200px): em 2560px o gutter cresce para ~13rem e espreme o
@@ -1353,7 +1387,7 @@ body.nav-open .menu-bars::after { transform: translateY(-6px) rotate(-45deg); }
 
 .home-method-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
   margin: clamp(2rem, 4vw, 3rem) 0 0;
   border-top: 1px solid rgba(255, 250, 243, 0.16);
@@ -1833,6 +1867,33 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   border-left-width: 0;
   border-top: 2px solid var(--clay);
 }
+
+/* FAQ home: estava em fundo creme chapado. Liga profundidade aquarela
+   glacial-fria (coerente com o proof acima) para o fundo respirar. */
+.page-home .faq-section-home {
+  position: relative;
+  overflow: hidden;
+  background: var(--glacier-soft);
+  /* Banda full-bleed: anula a largura de container centrado da regra base
+     (.faq-section ganha width:min(container) + margin:auto). Sem isto, a
+     margin-auto (280px) SOMA com o padding-inline da banda (280px) e empurra
+     o titulo para 560px — fora do eixo canonico das demais secoes. */
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: max(1.5rem, calc((100% - var(--container)) / 2));
+}
+.page-home .faq-section-home::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 58% 50% at 90% 14%, rgba(41, 108, 123, 0.12) 0%, transparent 66%),
+    radial-gradient(ellipse 52% 55% at 8% 88%, rgba(165, 214, 207, 0.20) 0%, transparent 64%);
+  z-index: 0;
+}
+.page-home .faq-section-home > *:not(.botanical) { position: relative; z-index: 1; }
 .difference-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
@@ -1927,7 +1988,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   overflow: clip;
   isolation: isolate;
 }
-.page-lp .qualifier-section > * { position: relative; z-index: 1; }
+.page-lp .qualifier-section > *:not(.botanical) { position: relative; z-index: 1; }
 .page-lp .qualifier-section h2, .page-lp .qualifier-section h3 { color: var(--ink); }
 .page-lp .qualifier-section p { color: var(--reading); }
 .page-lp .qualifier-section .section-heading {
@@ -2489,6 +2550,13 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 .botanical-tr { right: -6rem; top: -3rem; width: 18rem; opacity: 0.14; transform: scaleX(-1); }
 .botanical-bl { left: -7rem; bottom: -4rem; width: 19rem; opacity: 0.13; transform: rotate(180deg); }
 .botanical-soft { opacity: 0.12; }
+
+/* FATIA 4 — folhas nas margens vazias do ultrawide (a "direita-vazia" que o
+   gate qa:balance aponta em faq/qualifier). Reaproveitam o sistema .botanical
+   (z-index:-1, mask radial, hide <640px, float só em no-preference). Ancoram a
+   coluna larga do grid editorial sem disputar com a leitura (presa em ch). */
+.botanical-faq-br { right: -7rem; bottom: -5rem; width: 22rem; opacity: 0.11; transform: rotate(165deg); }
+.botanical-qualifier-r { right: -8rem; top: 3rem; width: 21rem; opacity: 0.10; transform: scaleX(-1); }
 
 /* MOVE 6 — desclichê botânico: a folha no fundo escuro do care morria invisível
    (ruído sem função) e a folha no canto superior-direito da proof era o padrão
@@ -3974,14 +4042,23 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   width: min(var(--container), calc(100% - 3rem));
   margin: 0 auto var(--space-block);
   padding: clamp(2rem, 5vw, 3rem);
-  background: var(--surface);
+  background:
+    radial-gradient(ellipse 62% 60% at 4% 8%, rgba(41, 108, 123, 0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 58% 58% at 96% 94%, rgba(165, 214, 207, 0.32) 0%, transparent 68%),
+    var(--surface);
   border-radius: var(--radius-soft);
   border: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: start;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Profundidade aplicada no background composto acima (petrol sup-esq +
+   aqua inf-dir). Mata o surface chapado sem competir com o iframe. */
+.local-section > * { position: relative; z-index: 1; }
 
 @media (max-width: 720px) {
   .local-section {
@@ -3997,9 +4074,11 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
   max-width: 40rem;
 }
 
+.local-map { display: flex; }
 .local-map iframe {
   width: 100%;
-  height: 320px;
+  height: 100%;
+  min-height: 360px;
   border: 0;
   border-radius: var(--radius-soft);
   display: block;
@@ -6144,7 +6223,7 @@ main > .warm:nth-of-type(even) { background: var(--glacier-soft); }
 /* ---------- /emagrecimento-bauru/ (page-lp) ---------- */
 /* B1 hero(CLARO) -> qualifier(TINTA): véu paper dissolve o topo. */
 .page-lp .qualifier-section { position: relative; }
-.page-lp .qualifier-section > * { position: relative; z-index: 1; }
+.page-lp .qualifier-section > *:not(.botanical) { position: relative; z-index: 1; }
 .page-lp .qualifier-section::before {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
   background: linear-gradient(to bottom, rgba(244, 238, 232, 0.9), rgba(244, 238, 232, 0) 150px);

@@ -82,7 +82,7 @@ const requiredVisibleFacts = [
 
 const requiredCopySignals = [
   ["index.html", "Atendimento presencial em Bauru"],
-  ["index.html", "retomar com mais clareza"],
+  ["index.html", "acompanhamento de verdade"],
   ["emagrecimento-bauru/index.html", "começar com segurança ou retomar"],
   ["emagrecimento-bauru/index.html", "plano acompanhado"],
   ["emagrecimento-bauru/index.html", "Acompanhamento semanal"],

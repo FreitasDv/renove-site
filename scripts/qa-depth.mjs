@@ -15,8 +15,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requireFromRenoveOs = createRequire(path.resolve(root, "../renove-os/package.json"));
 const { chromium } = requireFromRenoveOs("playwright");
 
-const port = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 4198);
-const baseUrl = `http://127.0.0.1:${port}`;
+const requestedPort = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 0);
+let baseUrl;
 const routes = [
   "/",
   "/emagrecimento-bauru/",
@@ -39,7 +39,16 @@ const SOLID_BRAND = new Set([
 ]);
 
 const server = createStaticServer();
-await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));
+await new Promise((resolve, reject) => {
+  server.once("error", reject);
+  server.listen(requestedPort, "127.0.0.1", () => {
+    server.off("error", reject);
+    const address = server.address();
+    const port = typeof address === "object" && address ? address.port : requestedPort;
+    baseUrl = `http://127.0.0.1:${port}`;
+    resolve();
+  });
+});
 const browser = await chromium.launch({ headless: true });
 const failures = [];
 
@@ -79,8 +88,10 @@ try {
     await page.close();
   }
 } finally {
-  await browser.close();
-  server.close();
+  await browser.close().catch(() => {});
+  server.closeIdleConnections?.();
+  server.closeAllConnections?.();
+  await new Promise((resolve) => server.close(resolve));
 }
 
 if (failures.length) {

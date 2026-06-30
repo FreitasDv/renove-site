@@ -31,6 +31,70 @@ Console Windows: usar PYTHONIOENCODING=utf-8 nos prints com − (U+2212) e ★.
 
 ---
 
+## ✅ FATIA 4 (movimento + folhas) 2026-06-28
+- Auditoria das 3 leis de movimento do SPEC (medido, não estimado):
+  - SCROLL-REVEAL: já cobre toda seção — `script.js` injeta `data-reveal` via 21
+    grupos de seletores (incl. `.section-heading`, que pega todo título), stagger
+    70ms cap 5, IntersectionObserver + fallback 1200ms. Lei JÁ satisfeita, não mexido.
+  - FOLHAS: sistema `.botanical` maduro (z-index:-1, mask radial centrada, hide
+    <640px, float só em prefers-reduced-motion:no-preference) já em care/proof (home),
+    emag-proof e sobre. FALTAVAM nas margens "direita-vazia" que o qa:balance aponta.
+  - COUNT-UP: números de prova estavam parados (só havia observer de GA4, não count).
+- FOLHAS adicionadas onde o balance flagrava vazio: `.botanical-faq-br` (home FAQ,
+  canto inferior-direito) e `.botanical-qualifier-r` (emag qualifier, direita). Medido:
+  ambas `position:absolute` aterrissando no vão direito (leafL≈2320 @2560), masked fade.
+- BUG achado e corrigido (causa raiz, não remendo): as regras `.faq-section-home > *`
+  e `.qualifier-section > *` setavam `position:relative;z-index:1` em TODOS os filhos,
+  incluindo a folha — anulando o `position:absolute` do `.botanical` (folha caía no
+  topo-esquerdo em flow). Fix: adicionado `:not(.botanical)` às 3 regras (1 FAQ + 2
+  qualifier), padrão que care/proof já usavam. Sem isto a folha não ancora na margem.
+- COUNT-UP (FATIA 4) em `script.js`: anima 0→valor (easeOutCubic 1100ms) quando o
+  número entra na viewport (threshold 0.6). Só `4,9` (Google) e `100%` existem (não há
+  +400). `4,9` envolvido em `<span class="count-up">` preservando o SVG da estrela
+  irmão; formatação pt-BR (vírgula). Roda APÓS o early-return de reduceMotion → com
+  movimento reduzido o HTML mantém o valor final (fallback correto). Medido: final
+  4,9 / 100% exatos, estrela intacta, 0 erro console.
+- NOTA HONESTA sobre o gate: qa:balance IGNORA decorativos por design (mede só
+  envelope de conteúdo). Logo a folha é remédio VISUAL da margem vazia (a dor real),
+  não muda o número do gate — e isso é o comportamento certo (decoração ≠ conteúdo).
+  Os 10 avisos de balance seguem como assimetria natural de grid editorial.
+- 10 gates verdes (npm test): content, a11y (10×3), depth (7), visual (11×5),
+  transition (5×5), header, grid-align, typography + balance/copy-ai não-bloqueantes.
+- PRÓXIMO: Fatias 5 e 6 do SPEC (voz/copy de dinheiro+processo; e gate final/QA de
+  fechamento). Ver SPEC seção 8.
+
+## ✅ FATIA 3 (escala & alinhamento) + FIX ALINHAMENTO HOME 2026-06-28
+- CAUSA RAIZ do "puxado/desalinhado" na home (medido, não estimado): a banda FAQ
+  full-bleed (`.faq-section-home`) sofria DUPLO recuo — a regra base `.faq-section`
+  dá `width:min(container)+margin-inline:auto` (280px) e o override da banda soma
+  `padding-inline:(100%-container)/2` (280px). Resultado: título FAQ em 560px no
+  2560 (e 226px no 1366), fora do eixo canônico 280/113 das demais seções. Por isso
+  `qa:grid-align` FALHAVA na home (3 eixos) e estava FORA do `npm test`.
+- FIX cirúrgico: `.faq-section-home` agora full-bleed de verdade (`width:100%`,
+  `max-width:none`, `margin-inline:0`) — o `padding-inline` sozinho posiciona no
+  eixo. Título FAQ voltou a 280px (2560) / 113px (1366). grid-align: home 2 eixos OK.
+- FATIA 3 auditada (medição em 5 págs × 6 breakpoints 390→2560):
+  - 0 `font-size` em px; os 18 `rem` literais são chrome/ícones (marca, nav, badge,
+    aspas decorativas) — fora da lei de tipografia de conteúdo. Não mexido.
+  - 0 linha de conteúdo > 74ch; 0 título H1/H2 multi-linha sem `text-wrap:balance`.
+    Tipografia de conteúdo já estava disciplinada de passadas anteriores.
+- BLINDAGEM (Fatia 3 virou lei instalada, não conserto pontual):
+  - Novo gate `scripts/qa-typography.mjs` (no `npm test`): falha se aparecer linha
+    longa (>74ch, calibrável via RENOVE_TYPO_MAXCH) ou título multi-linha sem balance.
+  - `qa:grid-align` ADICIONADO ao `npm test` (estava órfão porque falhava; agora
+    passa e protege contra regressão de eixo).
+- FIX local-section ultrawide: mapa esticado p/ preencher a coluna (era sliver 3:1
+  ~320px; agora 927×469 proporcional). `align-items:stretch` + iframe
+  `height:100%;min-height:360px`. (see.py deu falso-negativo: maps não renderiza em
+  headless; geometria validada por medição.)
+- 10 gates verdes (npm test EXIT 0): content, a11y (10×3), depth (7), visual (11×5),
+  transition (5×5), header, grid-align, typography + balance/copy-ai não-bloqueantes.
+- TRADE consciente: balance subiu 8→10 avisos (FAQ agora "direita-vazia" como care/
+  proof) — assimetria natural de grid editorial que a FATIA 4 (folhas nas margens)
+  vai resolver. Trocar defeito de alinhamento real por aviso não-bloqueante esperado.
+- PRÓXIMO: Fatia 4 (movimento + folhas botânicas nas margens vazias do ultrawide:
+  hero, care, proof, faq, qualifier) — ataca a "direita-vazia" sem esticar leitura.
+
 ## ✅ SPEC-DRIVEN AVANÇADO + FATIA 1 (profundidade) 2026-06-28
 - Causa raiz do "tudo péssimo" após 7 passadas: NÃO era conserto pontual faltando,
   era falta de SISTEMA (leis de ritmo tonal/transição/profundidade). Spec escrito:

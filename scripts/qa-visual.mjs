@@ -8,8 +8,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requireFromRenoveOs = createRequire(path.resolve(root, "../renove-os/package.json"));
 const { chromium } = requireFromRenoveOs("playwright");
 
-const port = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 4197);
-const baseUrl = `http://127.0.0.1:${port}`;
+// Porta efemera por padrao (0 = o SO escolhe uma livre). Evita EADDRINUSE
+// quando um run anterior nao liberou a porta a tempo. baseUrl so e conhecido
+// depois do listen, perguntando a porta real ao servidor.
+const requestedPort = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 0);
+let baseUrl;
 const routes = [
   "/",
   "/emagrecimento-bauru/",
@@ -28,7 +31,16 @@ const artifactDir = path.join(root, "qa-artifacts");
 mkdirSync(artifactDir, { recursive: true });
 
 const server = createStaticServer();
-await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));
+await new Promise((resolve, reject) => {
+  server.once("error", reject);
+  server.listen(requestedPort, "127.0.0.1", () => {
+    server.off("error", reject);
+    const address = server.address();
+    const port = typeof address === "object" && address ? address.port : requestedPort;
+    baseUrl = `http://127.0.0.1:${port}`;
+    resolve();
+  });
+});
 
 const browser = await chromium.launch({ headless: true });
 const failures = [];

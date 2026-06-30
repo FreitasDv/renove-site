@@ -31,8 +31,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const requireFromRenoveOs = createRequire(path.resolve(root, "../renove-os/package.json"));
 const { chromium } = requireFromRenoveOs("playwright");
 
-const port = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 4200);
-const baseUrl = `http://127.0.0.1:${port}`;
+const requestedPort = Number(process.env.RENOVE_ATLAS_QA_PORT ?? 0);
+let baseUrl;
 const strict = process.env.RENOVE_BALANCE_STRICT === "1";
 const LIMIAR = Number(process.env.RENOVE_BALANCE_THRESHOLD ?? 8); // % de assimetria
 const MIN_SECTION_W = 1280; // so avalia secao larga o suficiente
@@ -47,7 +47,16 @@ const routes = [
 const widths = [1440, 1920, 2560];
 
 const server = createStaticServer();
-await new Promise((resolve) => server.listen(port, "127.0.0.1", resolve));
+await new Promise((resolve, reject) => {
+  server.once("error", reject);
+  server.listen(requestedPort, "127.0.0.1", () => {
+    server.off("error", reject);
+    const address = server.address();
+    const port = typeof address === "object" && address ? address.port : requestedPort;
+    baseUrl = `http://127.0.0.1:${port}`;
+    resolve();
+  });
+});
 const browser = await chromium.launch({ headless: true });
 
 const failures = [];
